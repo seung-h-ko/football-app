@@ -3,13 +3,15 @@ import 'server-only'
 
 export default async function getStandings() {
 
+    const API_KEY: string = process.env.API_KEY as string;
+
     // EPL
 
     let url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=39';
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '5281e26cefmsh24d7c609f887de0p170d19jsnbff9f8827f7b',
+            'X-RapidAPI-Key': API_KEY,
             'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
         },
         next: {

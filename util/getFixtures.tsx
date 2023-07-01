@@ -49,10 +49,12 @@ async function getFixturesByYear(year: number) {
     let coupeDeFranceFixtures: Fixture[];
     let tropheeDesChampionsFixtures: Fixture[];
 
-    const options = {
+    const API_KEY: string = process.env.API_KEY as string;
+
+    const options: RequestInit = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '5281e26cefmsh24d7c609f887de0p170d19jsnbff9f8827f7b',
+            'X-RapidAPI-Key': API_KEY,
             'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
         },
         next: {
