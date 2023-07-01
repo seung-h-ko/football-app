@@ -57,7 +57,7 @@ export default async function Match({
                     <div className="text-base md:text-xl text-center">
                         {formatToLocalTime(fixtureByFixtureId.fixture.date)}
                     </div>
-                    <div className="w-full flex justify-between items-center">
+                    <div className="w-full flex justify-between items-center text-2xl">
                         <div>
                             {fixtureByFixtureId.goals.home}
                         </div>
