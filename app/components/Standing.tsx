@@ -110,7 +110,7 @@ const Standing = ({
 
                         <div
                             ref={menuRef}
-                            className="w-full flex overflow-x-scroll snap-x z-10 scrollbar-none scroll-smooth text-[10px] md:text-[15px]"
+                            className="w-full flex overflow-x-hidden snap-x z-10 scrollbar-none scroll-smooth text-[10px] md:text-[15px]"
                         >
                             {
                                 standingsData.map((responseData, i) => (
