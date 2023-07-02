@@ -11,7 +11,6 @@ export default async function getStandings() {
     const API_KEY: string = process.env.API_KEY as string;
 
     // EPL
-
     let url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=39';
     const options = {
         method: 'GET',
