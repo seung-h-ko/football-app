@@ -3,6 +3,7 @@ import { USE_SAMPLE } from "@/sampleData/useSample";
 import { Fixture } from "@/types";
 import getFixtureByFixtureId from "@/util/getFixtureByFixtureId";
 import Image from "next/image";
+import moment from "moment";
 
 interface PageProps {
     params: {
@@ -24,19 +25,10 @@ export default async function Match({
 
 
     function formatToLocalTime(timeUTC: string): string {
-        const newTime = new Date(timeUTC);
+        const newTime = moment(timeUTC);
 
-        const localDateString = newTime.toLocaleDateString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-        });
-
-        const localTimeString = newTime.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-        });
+        const localDateString = newTime.format('dddd, LL');
+        const localTimeString = newTime.format('LT');
 
         return `${localDateString} ${localTimeString}`;
     }

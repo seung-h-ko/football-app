@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
+import moment from "moment";
 
 
 
@@ -26,21 +27,24 @@ const Fixtures = ({
     const [today, setToday] = useState("");
 
     useEffect(() => {
-        setToday(new Date().toISOString().slice(0, 10)); //This gets only the year/month/day
-    }, [])
+        const today = moment().format('YYYY-MM-DD');
+        setToday(today);
+    }, []);
 
     const fixturesDone = fixturesByTeamId.filter(fixture => {
-        const fixtureDate = new Date(fixture.fixture.date).toISOString().slice(0, 10);
+        const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
         return fixtureDate < today;
-    })
+    });
+
     const fixturesToday = fixturesByTeamId.filter(fixture => {
-        const fixtureDate = new Date(fixture.fixture.date).toISOString().slice(0, 10);
+        const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
         return fixtureDate === today;
-    })
+    });
+
     const fixturesFuture = fixturesByTeamId.filter(fixture => {
-        const fixtureDate = new Date(fixture.fixture.date).toISOString().slice(0, 10);
+        const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
         return fixtureDate > today;
-    })
+    });
 
     const reversedFixturesDoneData = [...fixturesDone].reverse();
 
@@ -66,19 +70,10 @@ const Fixtures = ({
     }
 
     function formatToLocalTime(timeUTC: string): string {
-        const newTime = new Date(timeUTC);
+        const newTime = moment(timeUTC);
 
-        const localDateString = newTime.toLocaleDateString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-        });
-
-        const localTimeString = newTime.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-        });
+        const localDateString = newTime.format('dddd, LL');
+        const localTimeString = newTime.format('LT');
 
         return `${localDateString} ${localTimeString}`;
     }

@@ -3,6 +3,7 @@
 import { AllFixtures } from "@/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import moment from 'moment';
 
 
 interface PageProps {
@@ -23,19 +24,10 @@ export default function FixturesByLeague({
     }
 
     function formatToLocalTime(timeUTC: string): string {
-        const newTime = new Date(timeUTC);
+        const newTime = moment(timeUTC);
 
-        const localDateString = newTime.toLocaleDateString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-        });
-
-        const localTimeString = newTime.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-        });
+        const localDateString = newTime.format('dddd, LL');
+        const localTimeString = newTime.format('LT');
 
         return `${localDateString} ${localTimeString}`;
     }
@@ -43,10 +35,10 @@ export default function FixturesByLeague({
     if (fixturesData[league]) {
         return (
             fixturesData[league]?.slice(0, 4).map((match, j) => {
-                const date = new Date();
-                const matchDate = new Date(match.fixture.date);
+                const date = moment();
+                const matchDate = moment(match.fixture.date);
 
-                if (date < matchDate) {
+                if (date.isBefore(matchDate)) {
                     return (
                         <div
                             key={match.fixture.id}
