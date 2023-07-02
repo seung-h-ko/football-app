@@ -34,7 +34,6 @@ export default async function getStandings() {
         throw error;
     }
 
-
     // Laliga
     url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=140';
 
