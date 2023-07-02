@@ -40,9 +40,6 @@ export default async function Team({
             </div>
         )
     }
-
-    console.log(teamInfo)
-
     return (
 
         <div className="flex w-full justify-center items-center py-5">
