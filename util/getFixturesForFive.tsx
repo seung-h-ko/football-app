@@ -16,7 +16,6 @@ export default async function getFixturesForFive() {
 
     for (let fixturesOfOneYear of fixturesByYear) {
 
-
         let fixturesOfOneYearFor5League: AllFixtures = {};
         fixturesOfOneYearFor5League["epl"] = fixturesOfOneYear["epl"];
         fixturesOfOneYearFor5League["laLiga"] = fixturesOfOneYear["laLiga"]
@@ -33,10 +32,7 @@ export default async function getFixturesForFive() {
         }
 
         fixturesByYear5LeagueOnly.push(fixturesOfOneYearFor5League);
-
     }
-
-
 
     return fixturesByYear5LeagueOnly;
 };
