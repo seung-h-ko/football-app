@@ -28,6 +28,6 @@ export default function LocalTime({
     }, []);
 
     return (
-        <div>{formattedTime}</div>
+        <div className="flex justify-center items-center text-center">{formattedTime}</div>
     )
 }
