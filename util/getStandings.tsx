@@ -3,7 +3,7 @@ import 'server-only'
 
 
 interface Standing {
-    league: League;
+    league: League
 }
 
 export default async function getStandings() {
@@ -30,7 +30,7 @@ export default async function getStandings() {
         const response = await fetch(url, options);
         const result = await response.json();
 
-        eplStanding = result.response;
+        eplStanding = result.response[0];
     } catch (error) {
         throw error;
     }
@@ -45,7 +45,7 @@ export default async function getStandings() {
         const response = await fetch(url, options);
         const result = await response.json();
 
-        laLigaStanding = result.response;
+        laLigaStanding = result.response[0];
     } catch (error) {
         throw error;
     }
@@ -60,7 +60,7 @@ export default async function getStandings() {
         const response = await fetch(url, options);
         const result = await response.json();
 
-        bundesLigaStanding = result.response;
+        bundesLigaStanding = result.response[0];
     } catch (error) {
         throw error;
     }
@@ -75,7 +75,7 @@ export default async function getStandings() {
         const response = await fetch(url, options);
         const result = await response.json();
 
-        serieAStanding = result.response;
+        serieAStanding = result.response[0];
     } catch (error) {
         throw error;
     }
@@ -90,7 +90,7 @@ export default async function getStandings() {
         const response = await fetch(url, options);
         const result = await response.json();
 
-        ligue1Standing = result.response;
+        ligue1Standing = result.response[0];
     } catch (error) {
         throw error;
     }
