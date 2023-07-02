@@ -22,8 +22,8 @@ export default async function Home() {
     standingsData = getStandingsSample();
     fixturesDataByYear = getFixturesSample();
   } else {
-    standingsData = await getStandings();
     fixturesDataByYear = await getFixturesForFive();
+    standingsData = await getStandings();
   }
 
   if (standingsData === undefined || standingsData === null || fixturesDataByYear === undefined || fixturesDataByYear === null) {
