@@ -2,10 +2,14 @@ import 'server-only'
 import getStandings from './getStandings';
 import { League, Team } from '@/types';
 
+interface Standing {
+    league: League
+}
+
 export default async function getTeams() {
 
 
-    const standings = await getStandings();
+    const standings: Standing[] = await getStandings();
 
     const teams: Team[] = [];
 

@@ -1,5 +1,10 @@
+import { League } from '@/types';
 import 'server-only'
 
+
+interface Standing {
+    league: League;
+}
 
 export default async function getStandings() {
 
@@ -19,15 +24,13 @@ export default async function getStandings() {
         }
     };
 
-    let eplStanding;
+    let eplStanding: Standing;
 
     try {
         const response = await fetch(url, options);
-        const result: string = await response.text();
+        const result = await response.json();
 
-        const jsonData = JSON.parse(result);
-
-        eplStanding = jsonData.response;
+        eplStanding = result.response;
     } catch (error) {
         throw error;
     }
@@ -36,14 +39,13 @@ export default async function getStandings() {
     // Laliga
     url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=140';
 
-    let laLigaStanding;
+    let laLigaStanding: Standing;
 
     try {
         const response = await fetch(url, options);
-        const result: string = await response.text();
+        const result = await response.json();
 
-        const jsonData = JSON.parse(result);
-        laLigaStanding = jsonData.response;
+        laLigaStanding = result.response;
     } catch (error) {
         throw error;
     }
@@ -52,14 +54,13 @@ export default async function getStandings() {
     //BundesLiga
     url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=78';
 
-    let bundesLigaStanding;
+    let bundesLigaStanding: Standing;
 
     try {
         const response = await fetch(url, options);
-        const result: string = await response.text();
+        const result = await response.json();
 
-        const jsonData = JSON.parse(result);
-        bundesLigaStanding = jsonData.response;
+        bundesLigaStanding = result.response;
     } catch (error) {
         throw error;
     }
@@ -68,14 +69,13 @@ export default async function getStandings() {
     // Serie A
     url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=135';
 
-    let serieAStanding;
+    let serieAStanding: Standing;
 
     try {
         const response = await fetch(url, options);
-        const result: string = await response.text();
+        const result = await response.json();
 
-        const jsonData = JSON.parse(result);
-        serieAStanding = jsonData.response;
+        serieAStanding = result.response;
     } catch (error) {
         throw error;
     }
@@ -84,25 +84,24 @@ export default async function getStandings() {
     // Ligue 1
     url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=61';
 
-    let ligue1Standing;
+    let ligue1Standing: Standing;
 
     try {
         const response = await fetch(url, options);
-        const result: string = await response.text();
+        const result = await response.json();
 
-        const jsonData = JSON.parse(result);
-        ligue1Standing = jsonData.response;
+        ligue1Standing = result.response;
     } catch (error) {
         throw error;
     }
 
 
-    const standings = [];
-    standings.push(...eplStanding);
-    standings.push(...laLigaStanding);
-    standings.push(...bundesLigaStanding);
-    standings.push(...serieAStanding);
-    standings.push(...ligue1Standing);
+    const standings: Standing[] = [];
+    standings.push(eplStanding);
+    standings.push(laLigaStanding);
+    standings.push(bundesLigaStanding);
+    standings.push(serieAStanding);
+    standings.push(ligue1Standing);
 
     return standings;
 };
