@@ -27,7 +27,7 @@ export default async function getFixturesForFive() {
 
         for (const league in fixturesOfOneYearFor5League) {
             const fixtures = fixturesOfOneYearFor5League[league];
-            const filteredLeagueFixtures = fixtures.filter(fixture => moment(fixture.fixture.date).isAfter(moment().subtract(1, 'day'), 'day'));
+            const filteredLeagueFixtures = fixtures?.filter(fixture => moment(fixture.fixture.date).isAfter(today.subtract(1, 'day'), 'day'));
             filteredFixtures[league] = filteredLeagueFixtures;
         }
 
