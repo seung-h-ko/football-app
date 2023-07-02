@@ -2,10 +2,10 @@
 import Standing from './components/Standing'
 import getStandingsSample from '@/sampleData/getStandingsSample';
 import getStandings from '@/util/getStandings';
-import getFixtures from '@/util/getFixtures';
 import getFixturesSample from '@/sampleData/getFixturesSample';
 import { AllFixtures, League } from '@/types';
 import { USE_SAMPLE } from '@/sampleData/useSample';
+import getFixturesForFive from '@/util/getFixturesForFive';
 
 
 
@@ -23,7 +23,7 @@ export default async function Home() {
     fixturesDataByYear = getFixturesSample();
   } else {
     standingsData = await getStandings();
-    fixturesDataByYear = await getFixtures();
+    fixturesDataByYear = await getFixturesForFive();
   }
 
   if (standingsData === undefined || standingsData === null || fixturesDataByYear === undefined || fixturesDataByYear === null) {
