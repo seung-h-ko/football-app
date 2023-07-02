@@ -65,25 +65,6 @@ const Standing = ({
         router.push(`/team/${teamId}`);
     }
 
-    function formatToLocalTime(timeUTC: string): string {
-        const newTime = new Date(timeUTC);
-
-        const localDateString = newTime.toLocaleDateString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-        });
-
-        const localTimeString = newTime.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-        });
-
-        return `${localDateString} ${localTimeString}`;
-    }
-
-
     return (
         <div className='flex flex-col w-full max-w-7xl bg-gradient-to-br from-[#aa0000bb] to-[#aa000033] lg:flex-row'>
             <div className='flex justify-center items-center lg:w-3/5 md:p-10 py-5'>

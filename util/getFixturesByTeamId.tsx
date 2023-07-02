@@ -1,6 +1,7 @@
 import 'server-only'
 import getFixtures from './getFixtures';
 import { Fixture } from '@/types';
+import moment from 'moment';
 
 export default async function getFixturesByTeamId(id: number) {
 
@@ -23,9 +24,15 @@ export default async function getFixturesByTeamId(id: number) {
     }
 
     const fixturesByTeamIdSorted: Fixture[] = fixturesByTeamId.sort((a, b) => {
-        const dateA = new Date(a.fixture.date).getTime();
-        const dateB = new Date(b.fixture.date).getTime();
-        return dateA - dateB;
+        const time1 = moment(a.fixture.date);
+        const time2 = moment(b.fixture.date);
+        if (time1.isBefore(time2)) {
+            return -1;
+        }
+        if (time1.isAfter(time2)) {
+            return 1;
+        }
+        return 0;
     });
 
 

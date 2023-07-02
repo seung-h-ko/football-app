@@ -1,13 +1,14 @@
 import { AllFixtures, Fixture } from '@/types';
+import moment from 'moment';
 import 'server-only'
 
 
 export default async function getFixtures() {
 
-    const currentTime = new Date();
+    const currentTime = moment();
 
-    const year = currentTime.getFullYear();
-    const month = currentTime.getMonth();
+    const year = currentTime.year();
+    const month = currentTime.month();
 
     let fixturesByYear: AllFixtures[] = [];
 

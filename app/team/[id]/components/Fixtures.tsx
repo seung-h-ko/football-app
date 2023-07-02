@@ -3,7 +3,7 @@
 import { Fixture } from "@/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
 
 
@@ -23,7 +23,11 @@ const Fixtures = ({
         setVisibleItemsCount((prevCount) => prevCount + 5);
     };
 
-    const today = new Date().toISOString().slice(0, 10); //This gets only the year/month/day
+    const [today, setToday] = useState("");
+
+    useEffect(() => {
+        setToday(new Date().toISOString().slice(0, 10)); //This gets only the year/month/day
+    }, [])
 
     const fixturesDone = fixturesByTeamId.filter(fixture => {
         const fixtureDate = new Date(fixture.fixture.date).toISOString().slice(0, 10);
