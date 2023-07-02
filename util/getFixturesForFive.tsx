@@ -25,7 +25,7 @@ export default async function getFixturesForFive() {
 
         for (let league in fixturesOfOneYearFor5League) {
             if (fixturesOfOneYearFor5League.hasOwnProperty(league)) {
-                fixturesOfOneYearFor5League[league].filter(fixture =>
+                fixturesOfOneYearFor5League[league]?.filter(fixture =>
                     moment(fixture.fixture.date).isBefore(today.subtract(1, 'day'), 'day')
                 );
             }
