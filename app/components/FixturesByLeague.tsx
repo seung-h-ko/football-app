@@ -14,8 +14,9 @@ interface PageProps {
 
 
 export default function FixturesByLeague({ fixturesData, league }: PageProps) {
+
     if (fixturesData[league]) {
-        return fixturesData[league]?.slice(0, 4).map((match, j) => {
+        return fixturesData[league].slice(0, 4).map((match, j) => {
             return <StandingMatch match={match} index={j} key={match.fixture.id} />;
         });
     }

@@ -25,27 +25,44 @@ const Fixtures = ({
         setVisibleItemsCount((prevCount) => prevCount + 5);
     };
 
-    const [today, setToday] = useState("");
-    const [fixturesDone, setFixturesDone] = useState<Fixture[]>([]);
-    const [fixturesToday, setFixturesToday] = useState<Fixture[]>([]);
-    const [fixturesFuture, setFixturesFuture] = useState<Fixture[]>([]);
+    // const [today, setToday] = useState("");
+    // const [fixturesDone, setFixturesDone] = useState<Fixture[]>([]);
+    // const [fixturesToday, setFixturesToday] = useState<Fixture[]>([]);
+    // const [fixturesFuture, setFixturesFuture] = useState<Fixture[]>([]);
 
-    useEffect(() => {
-        setToday(moment().format('YYYY-MM-DD'));
+    // useEffect(() => {
+    //     setToday(moment().format('YYYY-MM-DD'));
 
-        setFixturesDone(fixturesByTeamId.filter(fixture => {
-            const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
-            return fixtureDate < today;
-        }));
-        setFixturesToday(fixturesByTeamId.filter(fixture => {
-            const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
-            return fixtureDate === today;
-        }));
-        setFixturesFuture(fixturesByTeamId.filter(fixture => {
-            const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
-            return fixtureDate > today;
-        }));
-    }, []);
+    //     setFixturesDone(fixturesByTeamId.filter(fixture => {
+    //         const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
+    //         return fixtureDate < today;
+    //     }));
+    //     setFixturesToday(fixturesByTeamId.filter(fixture => {
+    //         const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
+    //         return fixtureDate === today;
+    //     }));
+    //     setFixturesFuture(fixturesByTeamId.filter(fixture => {
+    //         const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
+    //         console.log(fixtureDate);
+    //         console.log("today = " + today);
+    //         return fixtureDate > today;
+    //     }));
+    // }, []);
+
+
+    const today = moment().format('YYYY-MM-DD');
+    const fixturesDone = fixturesByTeamId.filter(fixture => {
+        const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
+        return fixtureDate < today;
+    })
+    const fixturesToday = fixturesByTeamId.filter(fixture => {
+        const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
+        return fixtureDate === today;
+    })
+    const fixturesFuture = fixturesByTeamId.filter(fixture => {
+        const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
+        return fixtureDate > today;
+    })
 
     const reversedFixturesDoneData = [...fixturesDone].reverse();
 

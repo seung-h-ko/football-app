@@ -12,6 +12,7 @@ export default async function getTeamInfoByTeamId(id: number) {
     for (const team of teams) {
         if (team.team.id == id) {
             teamInfo = team
+            break;
         }
     }
 
