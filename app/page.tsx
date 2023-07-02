@@ -26,6 +26,14 @@ export default async function Home() {
     fixturesDataByYear = await getFixtures();
   }
 
+  if (standingsData === undefined || standingsData === null || fixturesDataByYear === undefined || fixturesDataByYear === null) {
+    return (
+      <div>
+
+      </div>
+    )
+  }
+
   return (
     <div className='flex flex-col w-full justify-center items-center md:p-10'>
 
