@@ -15,7 +15,7 @@ export default async function getFixtures() {
     //June or before 5 = June
     if (month <= 5) {
         fixturesByYear.push(await getFixturesByYear(year - 1));
-    } else if (month >= 6) {
+    } else if (month >= 8) {
         //July or after
         fixturesByYear.push(await getFixturesByYear(year));
     } else {
