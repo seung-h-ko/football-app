@@ -3,7 +3,9 @@ import { USE_SAMPLE } from "@/sampleData/useSample";
 import { Fixture } from "@/types";
 import getFixtureByFixtureId from "@/util/getFixtureByFixtureId";
 import Image from "next/image";
-import moment from "moment";
+import moment from "moment"
+import LocalTime from "../../components/LocalTime";
+import Link from "next/link";
 
 interface PageProps {
     params: {
@@ -22,32 +24,23 @@ export default async function Match({
         fixtureByFixtureId = await getFixtureByFixtureId(parseInt(params.id));
     }
 
-
-
-    function formatToLocalTime(timeUTC: string): string {
-        const newTime = moment(timeUTC);
-
-        const localDateString = newTime.format('dddd, LL');
-        const localTimeString = newTime.format('LT');
-
-        return `${localDateString} ${localTimeString}`;
-    }
-
     return (
         <div className="flex flex-col w-full justify-center items-center py-10 md:p-10">
             <div className="flex w-full max-w-7xl items-center justify-center perspective pb-10 md:pb-20">
                 <div className="w-1/3 rounded-full animate-logo-pop-left logo-shadow flex justify-center">
-                    <Image
-                        src={fixtureByFixtureId.teams.home.logo}
-                        alt="Image"
-                        width={250}
-                        height={250}
-                        className=""
-                    />
+                    <Link href={`../team/${fixtureByFixtureId.teams.home.id}`}>
+                        <Image
+                            src={fixtureByFixtureId.teams.home.logo}
+                            alt="Image"
+                            width={250}
+                            height={250}
+                            className=""
+                        />
+                    </Link>
                 </div>
                 <div className="w-1/3 flex flex-col justify-evenly items-center text-white">
                     <div className="text-base md:text-xl text-center">
-                        {formatToLocalTime(fixtureByFixtureId.fixture.date)}
+                        <LocalTime fixture={fixtureByFixtureId} />
                     </div>
                     <div className="w-full flex justify-between items-center text-2xl">
                         <div>
@@ -65,13 +58,15 @@ export default async function Match({
                     </div>
                 </div>
                 <div className="w-1/3 rounded-full animate-logo-pop-right logo-shadow flex justify-center">
-                    <Image
-                        src={fixtureByFixtureId.teams.away.logo}
-                        alt="Image"
-                        width={250}
-                        height={250}
-                        className=""
-                    />
+                    <Link href={`../team/${fixtureByFixtureId.teams.away.id}`}>
+                        <Image
+                            src={fixtureByFixtureId.teams.away.logo}
+                            alt="Image"
+                            width={250}
+                            height={250}
+                            className=""
+                        />
+                    </Link>
                 </div>
             </div>
             <div className="flex flex-col text-white w-full justify-center items-center py-5 md:p-10

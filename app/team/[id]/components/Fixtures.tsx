@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
 import moment from "moment";
+import LocalTime from "@/app/components/LocalTime";
 
 
 
@@ -25,26 +26,26 @@ const Fixtures = ({
     };
 
     const [today, setToday] = useState("");
+    const [fixturesDone, setFixturesDone] = useState<Fixture[]>([]);
+    const [fixturesToday, setFixturesToday] = useState<Fixture[]>([]);
+    const [fixturesFuture, setFixturesFuture] = useState<Fixture[]>([]);
 
     useEffect(() => {
-        const today = moment().format('YYYY-MM-DD');
-        setToday(today);
+        setToday(moment().format('YYYY-MM-DD'));
+
+        setFixturesDone(fixturesByTeamId.filter(fixture => {
+            const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
+            return fixtureDate < today;
+        }));
+        setFixturesToday(fixturesByTeamId.filter(fixture => {
+            const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
+            return fixtureDate === today;
+        }));
+        setFixturesFuture(fixturesByTeamId.filter(fixture => {
+            const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
+            return fixtureDate > today;
+        }));
     }, []);
-
-    const fixturesDone = fixturesByTeamId.filter(fixture => {
-        const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
-        return fixtureDate < today;
-    });
-
-    const fixturesToday = fixturesByTeamId.filter(fixture => {
-        const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
-        return fixtureDate === today;
-    });
-
-    const fixturesFuture = fixturesByTeamId.filter(fixture => {
-        const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
-        return fixtureDate > today;
-    });
 
     const reversedFixturesDoneData = [...fixturesDone].reverse();
 
@@ -67,15 +68,6 @@ const Fixtures = ({
 
     const handleFixtureClick = (fixtureId: number) => {
         router.push(`/match/${fixtureId}`);
-    }
-
-    function formatToLocalTime(timeUTC: string): string {
-        const newTime = moment(timeUTC);
-
-        const localDateString = newTime.format('dddd, LL');
-        const localTimeString = newTime.format('LT');
-
-        return `${localDateString} ${localTimeString}`;
     }
 
     return (
@@ -101,6 +93,7 @@ const Fixtures = ({
                                 key={fixture.fixture.id}
                                 className="w-full flex-shrink-0 flex text-white items-center h-36
                                 bg-gradient-to-r from-[#000000ee] to-[#333333e3]"
+                                onClick={() => handleFixtureClick(fixture.fixture.id)}
                             >
                                 <div className="flex flex-col justify-center items-center w-3/12 text-[15px] text-center">
                                     <Image
@@ -116,7 +109,7 @@ const Fixtures = ({
                                         {fixture.league.name}
                                     </div>
                                     <div className="text-[12px] h-1/6">
-                                        {formatToLocalTime(fixture.fixture.date)}
+                                        <LocalTime fixture={fixture} />
                                     </div>
                                     <div className="flex w-full justify-between items-center h-2/6
                                 text-[25px]">
@@ -189,7 +182,7 @@ const Fixtures = ({
                                         {fixture.league.name}
                                     </div>
                                     <div className="text-[12px] h-1/6">
-                                        {formatToLocalTime(fixture.fixture.date)}
+                                        <LocalTime fixture={fixture} />
                                     </div>
                                     <div className="flex w-full justify-between items-center h-2/6
                                 text-[25px]">
