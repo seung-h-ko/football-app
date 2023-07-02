@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import { Team, Games } from "@/types";
+import { Team } from "@/types";
 
 
 

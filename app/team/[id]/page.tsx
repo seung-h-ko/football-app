@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Fixtures from "./components/Fixtures";
-import getStandings from "@/util/getStandings";
-import fetchFixturesByLeagueId from "@/util/getFixtures";
 import getFixturesByTeamId from "@/util/getFixturesByTeamId";
 import { Fixture, Team } from "@/types";
 import getTeamInfoByTeamId from "@/util/getTeamInfoByTeamId";

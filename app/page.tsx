@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import Standing from './components/Standing'
 import getStandingsSample from '@/sampleData/getStandingsSample';
 import getStandings from '@/util/getStandings';

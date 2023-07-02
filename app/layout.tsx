@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import SearchBar from './components/SearchBar'
 import './globals.css'
 import { Inter } from 'next/font/google'

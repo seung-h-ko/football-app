@@ -3,7 +3,6 @@ import { USE_SAMPLE } from "@/sampleData/useSample";
 import { Fixture } from "@/types";
 import getFixtureByFixtureId from "@/util/getFixtureByFixtureId";
 import Image from "next/image";
-import moment from "moment"
 import LocalTime from "../../components/LocalTime";
 import Link from "next/link";
 
