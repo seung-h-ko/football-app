@@ -23,15 +23,15 @@ export default async function getFixturesForFive() {
         fixturesOfOneYearFor5League["serieA"] = fixturesOfOneYear["serieA"]
         fixturesOfOneYearFor5League["ligue1"] = fixturesOfOneYear["ligue1"]
 
-        for (let league in fixturesOfOneYearFor5League) {
-            if (fixturesOfOneYearFor5League.hasOwnProperty(league)) {
-                fixturesOfOneYearFor5League[league]?.filter(fixture =>
-                    moment(fixture.fixture.date).isBefore(today.subtract(1, 'day'), 'day')
-                );
-            }
+        const filteredFixtures: AllFixtures = {};
+
+        for (const league in fixturesOfOneYearFor5League) {
+            const fixtures = fixturesOfOneYearFor5League[league];
+            const filteredLeagueFixtures = fixtures.filter(fixture => moment(fixture.fixture.date).isAfter(moment().subtract(1, 'day'), 'day'));
+            filteredFixtures[league] = filteredLeagueFixtures;
         }
 
-        fixturesByYear5LeagueOnly.push(fixturesOfOneYearFor5League);
+        fixturesByYear5LeagueOnly.push(filteredFixtures);
     }
 
     return fixturesByYear5LeagueOnly;
