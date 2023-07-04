@@ -1,6 +1,6 @@
 
 import { AllFixtures } from "@/types";
-import StandingMatch from "./StandingMatch";
+import FixtureItem from "./FixtureItem";
 
 
 interface PageProps {
@@ -11,11 +11,12 @@ interface PageProps {
 
 export default function FixturesByLeague({ fixturesData, league }: PageProps) {
 
-    if (fixturesData[league]) {
+    if (Array.isArray(fixturesData[league]) && fixturesData[league].length > 0) {
         return fixturesData[league].slice(0, 4).map((match, j) => {
-            return <StandingMatch match={match} index={j} key={match.fixture.id} />;
+            return <FixtureItem match={match} index={j} key={match.fixture.id} />;
         });
+    } else {
+        return <div>No Matches</div>;
     }
 
-    return <div>No Matches</div>;
 }
