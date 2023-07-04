@@ -1,5 +1,5 @@
 
-import Standing from './components/Standing'
+import StandingsAndFixtures from './components/StandingsAndFixtures'
 import getStandingsSample from '@/sampleData/getStandingsSample';
 import getStandings from '@/util/getStandings';
 import getFixturesSample from '@/sampleData/getFixturesSample';
@@ -26,18 +26,14 @@ export default async function Home() {
     standingsData = await getStandings();
   }
 
-  if (standingsData === undefined || standingsData === null || fixturesDataByYear === undefined || fixturesDataByYear === null) {
-    return (
-      <div>
-
-      </div>
-    )
+  if (!standingsData?.length || !fixturesDataByYear?.length) {
+    return null;
   }
 
   return (
     <div className='flex flex-col w-full justify-center items-center md:p-10'>
 
-      <Standing standingsData={standingsData} fixturesDataByYear={fixturesDataByYear} />
+      <StandingsAndFixtures standingsData={standingsData} fixturesDataByYear={fixturesDataByYear} />
 
 
     </div>

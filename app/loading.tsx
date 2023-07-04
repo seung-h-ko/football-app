@@ -1,9 +1,9 @@
-import LoadingSpinner from "./components/LoadingSpinner";
+import LoadingComponent from "./components/LoadingComponent";
 
-export default function loading() {
+export default function Loading() {
     return (
-        <div className="flex flex-col w-full justify-center items-center h-screen text-white text-4xl">
-            <LoadingSpinner />
+        <div className="flex flex-col w-full justify-center items-center h-screen">
+            <LoadingComponent />
         </div>
     )
 }

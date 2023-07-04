@@ -55,6 +55,6 @@
 }
 
 .animate-logo-pop-right{
-    animation: logo-pop-right 0.8s ease-out;
+    animation: logo-pop-right 0.8s ease;
     transform: translateY(0px) rotateY(-50deg);
 }

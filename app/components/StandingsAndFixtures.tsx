@@ -10,13 +10,13 @@ interface StandingsData {
 }
 
 
-const Standing = ({
+export default function StandingsAndFixtures({
     standingsData,
     fixturesDataByYear
 }: {
     standingsData: StandingsData[]
     fixturesDataByYear: AllFixtures[]
-}) => {
+}) {
     const menuItems = ['EPL', 'SPL', 'Bundesliga', 'Serie A', 'Ligue 1'];
     const menuRef = useRef<HTMLDivElement>(null);
     const [activeTab, setActiveTab] = useState(0);
@@ -79,7 +79,7 @@ const Standing = ({
                                     <button
                                         key={i}
                                         className={`w-full p-4 rounded-t-lg md:text-[17px] text-[10px]
-                         ${i === activeTab ? 'text-gray-100' : 'text-gray-700 bg-[#00000055]'}`}
+                                                ${i === activeTab ? 'text-gray-100' : 'text-gray-700 bg-[#00000055]'}`}
                                         onClick={() => handleTabClick(i)}
                                     >
                                         {a}
@@ -257,6 +257,4 @@ const Standing = ({
         </div>
     );
 };
-
-export default Standing;
 

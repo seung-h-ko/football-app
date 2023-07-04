@@ -2,9 +2,9 @@
 
 import { GridLoader } from "react-spinners";
 
-export default function LoadingSpinner() {
+export default function LoadingComponent() {
     return (
-        <div className="spinner-container">
+        <div>
             <GridLoader color="#aa0000" size={30} />
         </div>
     )
