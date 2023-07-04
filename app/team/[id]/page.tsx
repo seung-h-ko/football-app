@@ -135,7 +135,7 @@ export default async function Team({
                     </div>
                 </div>
                 <div className="flex flex-col md:w-2/3">
-                    <Fixtures fixturesByTeamId={fixturesByTeamId} />
+                    <Fixtures fixturesByTeamId={fixturesByTeamId} teamId={parseInt(params.id)} />
                 </div>
             </div>
         </div>

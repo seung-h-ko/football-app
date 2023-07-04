@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Team } from "@/types";
 
 
@@ -15,6 +15,8 @@ export default function SearchBarForm({
 
     const [searchTerm, setSearchTerm] = useState('');
     const [focusedIndex, setFocusedIndex] = useState(-1);
+    const [showFilteredBox, setShowFilteredBox] = useState(false);
+
     const filteredTeams = teamsData.filter(team =>
         team.team.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -22,6 +24,7 @@ export default function SearchBarForm({
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
         setFocusedIndex(-1);
+        setShowFilteredBox(true);
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -40,9 +43,27 @@ export default function SearchBarForm({
         }
     };
 
+    const handleTeamItemClick = (teamId: number) => {
+        router.push(`/team/${teamId}`);
+        setSearchTerm('');
+    };
+
+    const handleOutsideClick = (event: MouseEvent) => {
+        if (teamListRef.current && !teamListRef.current.contains(event.target as Node)) {
+            setShowFilteredBox(false);
+        }
+    };
+
     const teamListRef = useRef<HTMLDivElement>(null);
 
     let router = useRouter();
+
+    useEffect(() => {
+        document.addEventListener('click', handleOutsideClick);
+        return () => {
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, []);
 
     return (
 
@@ -56,7 +77,7 @@ export default function SearchBarForm({
                 className="w-full bg-gradient-to-r from-[#999999b0] to-[#99999901] bg-transparent
                     p-2 outline-none border-[#99999970] border-[1px] rounded-xl hover:border-blue-400
                     focus:border-blue-400 focus:from-[#93c5ffb0] text-white placeholder:text-[#cccccc]" />
-            {searchTerm && filteredTeams.length > 0 ? (
+            {searchTerm && filteredTeams.length > 0 && showFilteredBox ? (
                 <div
                     ref={teamListRef}
                     className="absolute top-full left-[8px] w-full max-w-md bg-[#111111ee] z-20"
@@ -65,6 +86,7 @@ export default function SearchBarForm({
                         <div
                             key={standing.team.id}
                             className={`p-2 text-white ${i === focusedIndex ? 'bg-[#aaaaaaaa]' : ''}`}
+                            onClick={() => handleTeamItemClick(standing.team.id)}
                         >
                             {standing.team.name}
                         </div>
