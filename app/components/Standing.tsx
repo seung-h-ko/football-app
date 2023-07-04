@@ -209,7 +209,7 @@ const Standing = ({
                                 activeTab === 0 && (
                                     fixturesDataByYear.map((fixturesData, i) => {
                                         return (
-                                            <FixturesByLeague fixturesData={fixturesData} league={"epl"} key={activeTab.toString() + i.toString()} />
+                                            <FixturesByLeague fixturesData={fixturesData} league={"epl"} last={fixturesDataByYear.length - i === 1} key={"epl" + i} />
                                         )
                                     })
                                 )
@@ -218,7 +218,7 @@ const Standing = ({
                                 activeTab === 1 && (
                                     fixturesDataByYear.map((fixturesData, i) => {
                                         return (
-                                            <FixturesByLeague fixturesData={fixturesData} league={"laLiga"} key={activeTab.toString() + i.toString()} />
+                                            <FixturesByLeague fixturesData={fixturesData} league={"laLiga"} last={fixturesDataByYear.length - i === 1} key={"laLiga" + i} />
                                         )
                                     })
                                 )
@@ -227,7 +227,7 @@ const Standing = ({
                                 activeTab === 2 && (
                                     fixturesDataByYear.map((fixturesData, i) => {
                                         return (
-                                            <FixturesByLeague fixturesData={fixturesData} league={"bundesLiga"} key={activeTab.toString() + i.toString()} />
+                                            <FixturesByLeague fixturesData={fixturesData} league={"bundesLiga"} last={fixturesDataByYear.length - i === 1} key={"bundesLiga" + i} />
                                         )
                                     })
                                 )
@@ -236,7 +236,7 @@ const Standing = ({
                                 activeTab === 3 && (
                                     fixturesDataByYear.map((fixturesData, i) => {
                                         return (
-                                            <FixturesByLeague fixturesData={fixturesData} league={"serieA"} key={activeTab.toString() + i.toString()} />
+                                            <FixturesByLeague fixturesData={fixturesData} league={"serieA"} last={fixturesDataByYear.length - i === 1} key={"serieA" + i} />
                                         )
                                     })
                                 )
@@ -245,7 +245,7 @@ const Standing = ({
                                 activeTab === 4 && (
                                     fixturesDataByYear.map((fixturesData, i) => {
                                         return (
-                                            <FixturesByLeague fixturesData={fixturesData} league={"ligue1"} key={activeTab.toString() + i.toString()} />
+                                            <FixturesByLeague fixturesData={fixturesData} league={"ligue1"} last={fixturesDataByYear.length - i === 1} key={"ligue1" + i} />
                                         )
                                     })
                                 )
