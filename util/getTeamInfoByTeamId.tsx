@@ -1,21 +1,23 @@
-import 'server-only'
+import 'server-only';
 import getTeams from './getTeams';
 import { Team } from '@/types';
 
 export default async function getTeamInfoByTeamId(id: number) {
-
-
-    const teams: Team[] = await getTeams();
-
     let teamInfo: Team | undefined;
 
-    for (const team of teams) {
-        if (team.team.id == id) {
-            teamInfo = team
-            break;
+    try {
+        const teams: Team[] = await getTeams();
+
+        for (const team of teams) {
+            if (team.team.id === id) {
+                teamInfo = team;
+                break;
+            }
         }
+    } catch (error) {
+        console.error('Error occurred while fetching teams:', error);
     }
 
-
     return teamInfo;
-};
+}
+

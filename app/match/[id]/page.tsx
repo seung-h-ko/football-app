@@ -17,11 +17,21 @@ export default async function Match({
     params
 }: PageProps) {
 
-    let fixtureByFixtureId!: Fixture;
+    let fixtureByFixtureId: Fixture | undefined;
     if (USE_SAMPLE) {
         fixtureByFixtureId = getFixtureByFixtureIdSample(parseInt(params.id));
     } else {
         fixtureByFixtureId = await getFixtureByFixtureId(parseInt(params.id));
+    }
+
+    if (!fixtureByFixtureId) {
+        return (
+            <div className="flex w-full justify-center items-center py-5">
+                <div className="flex max-w-7xl p-5 w-full md:flex-row justify-center items-center text-neutral-100">
+                    No Fixtures Info Available
+                </div>
+            </div>
+        )
     }
 
     return (
