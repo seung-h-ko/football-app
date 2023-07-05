@@ -93,7 +93,6 @@ export default async function getStandings() {
         throw error;
     }
 
-
     const standings: Standing[] = [];
     standings.push(eplStanding);
     standings.push(laLigaStanding);
