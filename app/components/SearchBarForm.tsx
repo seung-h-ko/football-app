@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Team } from "@/types";
+import Link from "next/link";
 
 
 
@@ -43,8 +44,7 @@ export default function SearchBarForm({
         }
     };
 
-    const handleTeamItemClick = (teamId: number) => {
-        router.push(`/team/${teamId}`);
+    const handleTeamItemClick = () => {
         setSearchTerm('');
     };
 
@@ -80,16 +80,17 @@ export default function SearchBarForm({
             {searchTerm && filteredTeams.length > 0 && showFilteredBox ? (
                 <div
                     ref={teamListRef}
-                    className="absolute top-full left-[8px] w-full max-w-md bg-[#111111ee] z-20"
+                    className="absolute top-full left-[8px] w-full max-w-md bg-[#111111ee] z-20 flex flex-col"
                 >
                     {filteredTeams.slice(0, 10).map((standing, i) => (
-                        <div
+                        <Link
+                            href={`/team/${standing.team.id}`}
                             key={standing.team.id}
                             className={`p-2 text-white ${i === focusedIndex ? 'bg-[#aaaaaaaa]' : ''}`}
-                            onClick={() => handleTeamItemClick(standing.team.id)}
+                            onClick={() => handleTeamItemClick()}
                         >
                             {standing.team.name}
-                        </div>
+                        </Link>
                     ))}
                 </div>
             ) : null}

@@ -7,6 +7,7 @@ import { useState } from "react";
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
 import moment from "moment";
 import LocalTime from "@/app/components/LocalTime";
+import Link from "next/link";
 
 
 
@@ -26,31 +27,6 @@ const Fixtures = ({
     const handleShowMore = () => {
         setVisibleItemsCount((prevCount) => prevCount + 5);
     };
-
-    // const [today, setToday] = useState("");
-    // const [fixturesDone, setFixturesDone] = useState<Fixture[]>([]);
-    // const [fixturesToday, setFixturesToday] = useState<Fixture[]>([]);
-    // const [fixturesFuture, setFixturesFuture] = useState<Fixture[]>([]);
-
-    // useEffect(() => {
-    //     setToday(moment().format('YYYY-MM-DD'));
-
-    //     setFixturesDone(fixturesByTeamId.filter(fixture => {
-    //         const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
-    //         return fixtureDate < today;
-    //     }));
-    //     setFixturesToday(fixturesByTeamId.filter(fixture => {
-    //         const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
-    //         return fixtureDate === today;
-    //     }));
-    //     setFixturesFuture(fixturesByTeamId.filter(fixture => {
-    //         const fixtureDate = moment(fixture.fixture.date).format('YYYY-MM-DD');
-    //         console.log(fixtureDate);
-    //         console.log("today = " + today);
-    //         return fixtureDate > today;
-    //     }));
-    // }, []);
-
 
     const today = moment().format('YYYY-MM-DD');
     const fixturesDone = fixturesByTeamId.filter(fixture => {
@@ -83,12 +59,6 @@ const Fixtures = ({
     };
 
 
-    let router = useRouter();
-
-    const handleFixtureClick = (fixtureId: number) => {
-        router.push(`/match/${fixtureId}`);
-    }
-
     return (
         <div className="flex flex-col w-full justify-center items-center">
             <div className="flex flex-col w-full justify-center items-center">
@@ -108,11 +78,11 @@ const Fixtures = ({
                         style={{ transform: `translateX(${getTranslateX(currentIndex)})` }}
                     >
                         {firstItemsFixturesFuture.map((fixture, i) => (
-                            <div
+                            <Link
+                                href={`/match/${fixture.fixture.id}`}
                                 key={fixture.fixture.id}
                                 className="w-full flex-shrink-0 flex text-white items-center h-36
                                 bg-gradient-to-r from-[#000000ee] to-[#333333e3] hover:bg-white"
-                                onClick={() => handleFixtureClick(fixture.fixture.id)}
                             >
                                 <div className="flex flex-col justify-center items-center w-3/12 text-[15px] text-center">
                                     <Image
@@ -158,7 +128,7 @@ const Fixtures = ({
                                     <div className="text-center">{fixture.teams.away.name}</div>
                                 </div>
                                 <div className='w-[2%] h-full'></div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                     <button
@@ -181,11 +151,11 @@ const Fixtures = ({
                             className="flex w-full text-white items-center h-36
                         bg-gradient-to-r from-[#000000ee] to-[#333333e3]"
                         >
-                            <div
+                            <Link
+                                href={`/match/${fixture.fixture.id}`}
                                 className={`flex w-full h-full justify-center items-center p-2
                                         ${i % 2 == 0 ? 'bg-[#00000055]' : ''}
                                         hover:bg-[#aa000055]`}
-                                onClick={() => handleFixtureClick(fixture.fixture.id)}
                             >
                                 <div className="flex flex-col justify-center items-center w-3/12 text-[15px] text-center">
                                     <Image
@@ -262,7 +232,7 @@ const Fixtures = ({
                                     />
                                     <div className="text-center">{fixture.teams.away.name}</div>
                                 </div>
-                            </div>
+                            </Link>
                             <div
                                 className={`w-[2%] h-full 
                                 ${!fixture.teams.home.winner && !fixture.teams.away.winner ? 'bg-slate-600'
