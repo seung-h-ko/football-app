@@ -12,6 +12,7 @@ interface PageProps {
     }
 }
 
+
 export default async function Match({
     params
 }: PageProps) {
