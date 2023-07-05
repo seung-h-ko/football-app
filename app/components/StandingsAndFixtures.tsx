@@ -1,9 +1,9 @@
 'use client'
 
 import { AllFixtures, League } from '@/types';
-import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 import FixturesByLeague from './FixturesByLeague';
+import Link from 'next/link';
 
 interface StandingsData {
     league: League
@@ -57,12 +57,6 @@ export default function StandingsAndFixtures({
             }
         };
     }, []);
-
-    let router = useRouter();
-
-    const handleTeamClickFromStanding = (teamId: number) => {
-        router.push(`/team/${teamId}`);
-    }
 
     return (
         <div className='flex flex-col w-full max-w-7xl bg-gradient-to-br from-[#aa0000bb] to-[#aa000033] lg:flex-row'>
@@ -138,11 +132,11 @@ export default function StandingsAndFixtures({
                                             </div>
                                             {
                                                 responseData.league.standings[0].map((team, j) => (
-                                                    <div
+                                                    <Link
+                                                        href={`/team/${team.team.id}`}
                                                         key={j + team.team.name}
                                                         className={`flex w-full p-1 ${j % 2 == 0 ? 'bg-[#00000066]' : ''}
                                                              hover:bg-[#ee000066]`}
-                                                        onClick={() => handleTeamClickFromStanding(team.team.id)}
                                                     >
                                                         <div className='w-1/12 flex px-2 justify-center items-center'>
                                                             {j + 1}
@@ -187,7 +181,7 @@ export default function StandingsAndFixtures({
                                                                 ))
                                                             }
                                                         </div>
-                                                    </div>
+                                                    </Link>
                                                 ))
                                             }
                                         </div>
