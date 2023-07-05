@@ -1,9 +1,6 @@
-
-import { Suspense } from 'react'
 import SearchBar from './components/SearchBar'
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Loading from './loading'
 
 const inter = Inter({ subsets: ['latin'], preload: true })
 
@@ -31,9 +28,7 @@ export default function RootLayout({
           <div className='absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-transparent to-black opacity-100'></div>
           <div className='relative'>
             <SearchBar />
-            <Suspense fallback={<Loading />}>
-              {children}
-            </Suspense>
+            {children}
           </div>
         </div>
       </body>
