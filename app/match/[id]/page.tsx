@@ -38,11 +38,11 @@ export default async function Match({
                     </Link>
                 </div>
                 <div className="w-1/3 flex flex-col items-center justify-center h-56">
-                    <div className="h-1/5 flex justify-center items-center text-base md:text-xl text-center">
+                    <div className="h-1/5 flex justify-center items-center text-sm md:text-xl text-center">
                         <LocalTime fixture={fixtureByFixtureId} />
                     </div>
-                    <div className="h-2/5 w-full flex justify-between items-center text-5xl">
-                        <div>
+                    <div className="h-2/5 w-full flex justify-between items-center md:text-5xl text-2xl">
+                        <div className="flex flex-col justify-center items-center">
                             {fixtureByFixtureId.score.fulltime.home}
                             {
                                 fixtureByFixtureId.score.penalty.home !== null ?
@@ -64,7 +64,7 @@ export default async function Match({
                         <div>
                             -
                         </div>
-                        <div>
+                        <div className="flex flex-col justify-center items-center">
                             {fixtureByFixtureId.score.fulltime.away}
                             {
                                 fixtureByFixtureId.score.penalty.away !== null ?
@@ -84,7 +84,7 @@ export default async function Match({
                             }
                         </div>
                     </div>
-                    <div className="h-1/5 flex justify-center items-center text-base md:text-xl text-center">
+                    <div className="h-1/5 flex justify-center items-center text-sm md:text-xl text-center">
                         {fixtureByFixtureId.fixture.venue.name}
                     </div>
                 </div>

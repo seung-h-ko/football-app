@@ -93,19 +93,18 @@ const Fixtures = ({
                                     <div className="text-center">{fixture.teams.home.name}</div>
                                 </div>
                                 <div className="flex flex-col justify-center items-center w-1/2 h-full py-2">
-                                    <div className="text-xs h-1/6">
+                                    <div className="md:text-xs h-1/6 text-center text-[8px]">
                                         {fixture.league.name}
                                     </div>
-                                    <div className="text-xs h-1/6">
+                                    <div className="md:text-xs h-1/6 text-center text-[8px]">
                                         <LocalTime fixture={fixture} />
                                     </div>
-                                    <div className="flex w-full justify-between items-center h-2/6
-                                text-2xl">
-                                        <div>
+                                    <div className="flex w-full justify-between items-center h-2/6 md:text-2xl">
+                                        <div className="flex flex-col justify-center items-center">
                                             {fixture.score.fulltime.home}
                                             {
                                                 fixture.score.penalty.home !== null ?
-                                                    <div className="flex flex-col justify-center items-center text-sm">
+                                                    <div className="flex flex-col justify-center items-center md:text-xs text-[8px]">
                                                         <div>
                                                             (et. ) {fixture.score.extratime.home}
                                                         </div>
@@ -123,11 +122,11 @@ const Fixtures = ({
                                         <div>
                                             -
                                         </div>
-                                        <div>
+                                        <div className="flex flex-col justify-center items-center">
                                             {fixture.score.fulltime.away}
                                             {
                                                 fixture.score.penalty.away !== null ?
-                                                    <div className="flex flex-col justify-center items-center text-sm">
+                                                    <div className="flex flex-col justify-center items-center md:text-xs text-[8px]">
                                                         <div>
                                                             (et. ) {fixture.score.extratime.away}
                                                         </div>
@@ -143,7 +142,7 @@ const Fixtures = ({
                                             }
                                         </div>
                                     </div>
-                                    <div className="h-1/6 text-xs">
+                                    <div className="h-1/6 md:text-xs text-center text-[8px]">
                                         {fixture.fixture.venue.name}
                                     </div>
                                     <div className="h-1/6">
@@ -197,19 +196,19 @@ const Fixtures = ({
                                     <div className="text-center">{fixture.teams.home.name}</div>
                                 </div>
                                 <div className="flex flex-col justify-center items-center w-1/2 h-full py-2">
-                                    <div className="text-xs h-1/6">
+                                    <div className="md:text-xs h-1/6 text-center text-[8px]">
                                         {fixture.league.name}
                                     </div>
-                                    <div className="text-xs h-1/6">
+                                    <div className="md:text-xs h-1/6 text-center text-[8px]">
                                         <LocalTime fixture={fixture} />
                                     </div>
-                                    <div className="flex w-full justify-between items-center h-2/6 text-2xl">
+                                    <div className="flex w-full justify-between items-center h-2/6 md:text-2xl">
                                         <div className="flex flex-col justify-center items-center">
                                             {fixture.score.fulltime.home}
                                             {
                                                 fixture.score.penalty.home !== null ?
-                                                    <div className="flex flex-col justify-center items-center text-sm">
-                                                        <div>
+                                                    <div className="flex flex-col justify-center items-center md:text-xs text-[8px]">
+                                                        <div className="">
                                                             (et. ) {fixture.score.extratime.home}
                                                         </div>
                                                         <div>
@@ -230,7 +229,7 @@ const Fixtures = ({
                                             {fixture.score.fulltime.away}
                                             {
                                                 fixture.score.penalty.away !== null ?
-                                                    <div className="flex flex-col justify-center items-center text-sm">
+                                                    <div className="flex flex-col justify-center items-center md:text-xs text-[8px]">
                                                         <div>
                                                             (et. ) {fixture.score.extratime.away}
                                                         </div>
@@ -246,7 +245,7 @@ const Fixtures = ({
                                             }
                                         </div>
                                     </div>
-                                    <div className="h-1/6 text-xs">
+                                    <div className="h-1/6 md:text-xs text-center text-[8px]">
                                         {fixture.fixture.venue.name}
                                     </div>
                                     <div className="h-1/6">
