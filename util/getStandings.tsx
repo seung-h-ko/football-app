@@ -1,104 +1,101 @@
 import { League } from '@/types';
-import 'server-only'
-
+import 'server-only';
 
 interface Standing {
-    league: League
+    league: League;
 }
 
 export default async function getStandings() {
-
     const API_KEY: string = process.env.API_KEY as string;
 
-    // EPL
-    let url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=39';
     const options = {
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': API_KEY,
-            'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+            'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com',
         },
         next: {
-            revalidate: 60 * 60 * 24
-        }
+            revalidate: 60 * 60 * 24,
+        },
     };
 
-    let eplStanding: Standing;
+    const standings: Standing[] = [];
 
+
+    // EPL
     try {
+        let url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=39';
+
         const response = await fetch(url, options);
         const result = await response.json();
 
-        eplStanding = result.response[0];
+        const eplStanding = result.response[0];
+        if (eplStanding) {
+            standings.push(eplStanding);
+        }
     } catch (error) {
-        throw error;
+        console.error('Error fetching EPL standings:', error);
     }
 
     // Laliga
-    url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=140';
-
-    let laLigaStanding: Standing;
-
     try {
+        let url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=140';
+
         const response = await fetch(url, options);
         const result = await response.json();
 
-        laLigaStanding = result.response[0];
+        const laLigaStanding = result.response[0];
+        if (laLigaStanding) {
+            standings.push(laLigaStanding);
+        }
     } catch (error) {
-        throw error;
+        console.error('Error fetching La Liga standings:', error);
     }
 
-
-    //BundesLiga
-    url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=78';
-
-    let bundesLigaStanding: Standing;
-
+    // BundesLiga
     try {
+        let url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=78';
+
         const response = await fetch(url, options);
         const result = await response.json();
 
-        bundesLigaStanding = result.response[0];
+        const bundesLigaStanding = result.response[0];
+        if (bundesLigaStanding) {
+            standings.push(bundesLigaStanding);
+        }
     } catch (error) {
-        throw error;
+        console.error('Error fetching Bundesliga standings:', error);
     }
-
 
     // Serie A
-    url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=135';
-
-    let serieAStanding: Standing;
-
     try {
+        let url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=135';
+
         const response = await fetch(url, options);
         const result = await response.json();
 
-        serieAStanding = result.response[0];
+        const serieAStanding = result.response[0];
+        if (serieAStanding) {
+            standings.push(serieAStanding);
+        }
     } catch (error) {
-        throw error;
+        console.error('Error fetching Serie A standings:', error);
     }
-
 
     // Ligue 1
-    url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=61';
-
-    let ligue1Standing: Standing;
-
     try {
+        let url = 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2022&league=61';
+
         const response = await fetch(url, options);
         const result = await response.json();
 
-        ligue1Standing = result.response[0];
+        const ligue1Standing = result.response[0];
+        if (ligue1Standing) {
+            standings.push(ligue1Standing);
+        }
     } catch (error) {
-        throw error;
+        console.error('Error fetching Ligue 1 standings:', error);
     }
 
-    const standings: Standing[] = [];
-    standings.push(eplStanding);
-    standings.push(laLigaStanding);
-    standings.push(bundesLigaStanding);
-    standings.push(serieAStanding);
-    standings.push(ligue1Standing);
-
     return standings;
-};
+}
