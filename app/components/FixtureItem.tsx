@@ -5,7 +5,7 @@ import Image from "next/image";
 import LocalTime from "./LocalTime";
 import moment, { Moment } from "moment";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface PageProps {
     match: Fixture,
