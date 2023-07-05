@@ -7,7 +7,7 @@ export default async function getFixtureByFixtureId(id: number) {
 
     const fixturesByYear = await getFixtures();
 
-    let fixtureByFixtureId!: Fixture;
+    let fixtureByFixtureId: Fixture | undefined;
 
     for (let fixtures of fixturesByYear) {
         for (let league in fixtures) {

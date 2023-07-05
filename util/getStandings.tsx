@@ -94,25 +94,11 @@ export default async function getStandings() {
     }
 
     const standings: Standing[] = [];
-    if (eplStanding) {
-        standings.push(eplStanding);
-    }
-
-    if (laLigaStanding) {
-        standings.push(laLigaStanding);
-    }
-
-    if (bundesLigaStanding) {
-        standings.push(bundesLigaStanding);
-    }
-
-    if (serieAStanding) {
-        standings.push(serieAStanding);
-    }
-
-    if (ligue1Standing) {
-        standings.push(ligue1Standing);
-    }
+    standings.push(eplStanding);
+    standings.push(laLigaStanding);
+    standings.push(bundesLigaStanding);
+    standings.push(serieAStanding);
+    standings.push(ligue1Standing);
 
     return standings;
 };

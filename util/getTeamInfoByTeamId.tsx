@@ -7,7 +7,7 @@ export default async function getTeamInfoByTeamId(id: number) {
 
     const teams: Team[] = await getTeams();
 
-    let teamInfo!: Team;
+    let teamInfo: Team | undefined;
 
     for (const team of teams) {
         if (team.team.id == id) {

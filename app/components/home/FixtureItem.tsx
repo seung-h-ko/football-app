@@ -3,7 +3,7 @@
 import { Fixture } from "@/types";
 import Image from "next/image";
 import LocalTime from "../LocalTime";
-import moment, { Moment } from "moment";
+import moment from "moment";
 import Link from "next/link";
 
 interface PageProps {
