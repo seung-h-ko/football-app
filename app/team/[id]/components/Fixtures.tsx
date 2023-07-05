@@ -2,7 +2,6 @@
 
 import { Fixture } from "@/types";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
 import moment from "moment";
