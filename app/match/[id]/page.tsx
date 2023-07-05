@@ -101,7 +101,7 @@ export default async function Match({
                 </div>
             </div>
             <div className="flex flex-col w-full justify-center items-center py-5 md:p-10
-                bg-gradient-to-b from-red-600/60 to-red-600/10">
+                bg-gradient-to-b from-red-800/60 to-red-800/10">
                 <div className="flex flex-col justify-center items-center py-2">
                     <div>
                         {fixtureByFixtureId.league.name}

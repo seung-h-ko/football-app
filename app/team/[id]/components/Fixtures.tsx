@@ -81,7 +81,7 @@ const Fixtures = ({
                                 href={`/match/${fixture.fixture.id}`}
                                 key={fixture.fixture.id}
                                 className="w-full flex-shrink-0 flex text-white items-center h-36
-                                bg-gradient-to-r from-black/90 to-black/40 hover:bg-red-600"
+                                bg-gradient-to-r from-black/90 to-black/40 hover:bg-red-800"
                             >
                                 <div className="flex flex-col justify-center items-center w-3/12 text-sm text-center">
                                     <Image
@@ -180,14 +180,14 @@ const Fixtures = ({
                         <div
                             key={i}
                             className="flex w-full text-white items-center h-36
-                        bg-gradient-to-r from-black/90 to-black/40 hover:bg-red-600"
+                        bg-gradient-to-r from-black/90 to-black/40 hover:bg-red-800"
                         >
                             <Link
                                 href={`/match/${fixture.fixture.id}`}
                                 className={`flex w-full h-full justify-center items-center p-2
-                                        ${i % 2 == 0 ? 'bg-black/30' : ''}`}
+                                        ${i % 2 == 0 ? 'bg-black/50' : ''}`}
                             >
-                                <div className="flex flex-col justify-center items-center w-3/12 text-[15px] text-center">
+                                <div className="flex flex-col justify-center items-center w-3/12 text-sm text-center">
                                     <Image
                                         src={fixture.teams.home.logo}
                                         alt="HomeLogo"
@@ -203,8 +203,7 @@ const Fixtures = ({
                                     <div className="text-xs h-1/6">
                                         <LocalTime fixture={fixture} />
                                     </div>
-                                    <div className="flex w-full justify-between items-center h-2/6
-                                text-[25px]">
+                                    <div className="flex w-full justify-between items-center h-2/6 text-2xl">
                                         <div className="flex flex-col justify-center items-center">
                                             {fixture.score.fulltime.home}
                                             {
@@ -247,7 +246,7 @@ const Fixtures = ({
                                             }
                                         </div>
                                     </div>
-                                    <div className="h-1/6 text-[10px]">
+                                    <div className="h-1/6 text-xs">
                                         {fixture.fixture.venue.name}
                                     </div>
                                     <div className="h-1/6">
@@ -278,7 +277,7 @@ const Fixtures = ({
                         <div className="p-2">
                             <button
                                 onClick={handleShowMore}
-                                className="bg-gradient-to-r from-black/80 to-black/60 p-4"
+                                className="bg-gradient-to-r from-gray-900/80 to-black/60 p-4"
                             >Show more</button>
                         </div>
                     )

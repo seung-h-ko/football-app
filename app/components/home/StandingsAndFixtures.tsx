@@ -60,7 +60,7 @@ export default function StandingsAndFixtures({
     }, []);
 
     return (
-        <div className='flex flex-col w-full max-w-7xl bg-gradient-to-br from-red-600/75 to-red-600/20 lg:flex-row'>
+        <div className='flex flex-col w-full max-w-7xl bg-gradient-to-br from-red-800/75 to-red-800/20 lg:flex-row'>
             <div className='flex justify-center items-center lg:w-3/5 md:p-10 py-5'>
                 <div className='flex flex-col justify-center items-center bg-gradient-to-b from-black/40 w-full text-neutral-100 rounded-3xl'>
                     <div className="w-full flex flex-col justify-center items-center">
@@ -136,7 +136,7 @@ export default function StandingsAndFixtures({
                                                         href={`/team/${team.team.id}`}
                                                         key={j + team.team.name}
                                                         className={`flex w-full p-1 ${j % 2 == 0 ? 'bg-black/40' : ''}
-                                                             hover:bg-red-600/50`}
+                                                             hover:bg-red-800/50`}
                                                     >
                                                         <div className='w-1/12 flex px-2 justify-center items-center'>
                                                             {j + 1}

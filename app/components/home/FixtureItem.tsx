@@ -24,7 +24,7 @@ export default function FixtureItem({
         <Link
             href={`/match/${match.fixture.id}`}
             key={match.fixture.id}
-            className={`flex w-full p-2 justify-center items-center h-36 hover:bg-red-600/50
+            className={`flex w-full p-2 justify-center items-center h-36 hover:bg-red-800/50
                                 ${index % 2 == 0 ? "bg-black/40" : ''}
                                 animated-div`}
         >
