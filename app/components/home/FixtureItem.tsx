@@ -2,7 +2,7 @@
 
 import { Fixture } from "@/types";
 import Image from "next/image";
-import LocalTime from "./LocalTime";
+import LocalTime from "../LocalTime";
 import moment, { Moment } from "moment";
 import Link from "next/link";
 
@@ -24,8 +24,8 @@ export default function FixtureItem({
         <Link
             href={`/match/${match.fixture.id}`}
             key={match.fixture.id}
-            className={`flex w-full p-2 justify-center items-center h-36 hover:bg-[#aa000077]
-                                ${index % 2 == 0 ? "bg-[#00000033]" : ''}
+            className={`flex w-full p-2 justify-center items-center h-36 hover:bg-red-600/50
+                                ${index % 2 == 0 ? "bg-black/40" : ''}
                                 animated-div`}
         >
             <div className='w-1/3 flex flex-col justify-center items-center text-center'>
@@ -38,7 +38,7 @@ export default function FixtureItem({
                 {match.teams.home.name}
             </div>
             <div className='w-1/3 flex flex-col justify-center items-center h-full'>
-                <div className='h-1/3 text-[9px] text-center'>
+                <div className='h-1/3 text-xs text-center'>
                     <LocalTime fixture={match} />
                 </div>
                 <div className='h-1/3 text-center'>vs</div>

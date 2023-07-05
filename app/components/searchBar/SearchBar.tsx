@@ -19,8 +19,8 @@ export default async function SearchBar() {
     }
 
     return (
-        <div className="flex w-full p-3 justify-center items-center bg-[#11111131]">
-            <div className="w-1/6 text-neutral-200 flex justify-center items-center">
+        <div className="flex w-full p-3 justify-center items-center bg-black/40">
+            <div className="w-1/6 text-neutral-100 flex justify-center items-center">
                 <a href={"/"}
                     className="flex justify-center items-center"
                 >

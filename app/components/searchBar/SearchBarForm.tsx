@@ -30,8 +30,13 @@ export default function SearchBarForm({
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'ArrowDown') {
-            event.preventDefault();
-            setFocusedIndex(prevIndex => (prevIndex < filteredTeams.length - 1 ? prevIndex + 1 : prevIndex));
+            let length = 0;
+            if (filteredTeams.length > 10) {
+                length = 10;
+            } else {
+                length = filteredTeams.length;
+            }
+            setFocusedIndex(prevIndex => (prevIndex < length - 1 ? prevIndex + 1 : prevIndex));
         } else if (event.key === 'ArrowUp') {
             event.preventDefault();
             setFocusedIndex(prevIndex => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
@@ -74,19 +79,19 @@ export default function SearchBarForm({
                 onChange={handleSearchChange}
                 onKeyDown={handleKeyDown}
                 placeholder="Search for a team"
-                className="w-full bg-gradient-to-r from-[#999999b0] to-[#99999901] bg-transparent
-                    p-2 outline-none border-[#99999970] border-[1px] rounded-xl hover:border-blue-400
-                    focus:border-blue-400 focus:from-[#93c5ffb0] text-white placeholder:text-[#cccccc]" />
+                className="w-full bg-gradient-to-r from-neutral-100/60 to-black/25 bg-transparent
+                    p-2 outline-none border-neutral-100/60 border-[1px] rounded-xl hover:border-blue-400
+                    focus:border-blue-400 focus:from-blue-400/60 text-neutral-100 placeholder:text-neutral-100/70" />
             {searchTerm && filteredTeams.length > 0 && showFilteredBox ? (
                 <div
                     ref={teamListRef}
-                    className="absolute top-full left-[8px] w-full max-w-md bg-[#111111ee] z-20 flex flex-col"
+                    className="absolute top-full left-2 w-full max-w-md bg-black/80 z-20 flex flex-col"
                 >
                     {filteredTeams.slice(0, 10).map((standing, i) => (
                         <Link
                             href={`/team/${standing.team.id}`}
                             key={standing.team.id}
-                            className={`p-2 text-white ${i === focusedIndex ? 'bg-[#aaaaaaaa]' : ''}`}
+                            className={`p-2 text-neutral-100 ${i === focusedIndex ? 'bg-neutral-100/40' : ''}`}
                             onClick={() => handleTeamItemClick()}
                         >
                             {standing.team.name}

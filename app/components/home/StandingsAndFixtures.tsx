@@ -18,6 +18,7 @@ export default function StandingsAndFixtures({
     fixturesDataByYear: AllFixtures[]
 }) {
     const menuItems = ['EPL', 'SPL', 'Bundesliga', 'Serie A', 'Ligue 1'];
+    const keyItems = ['epl', 'laLiga', 'bundesliga', 'serieA', 'ligue1'];
     const menuRef = useRef<HTMLDivElement>(null);
     const [activeTab, setActiveTab] = useState(0);
 
@@ -59,21 +60,20 @@ export default function StandingsAndFixtures({
     }, []);
 
     return (
-        <div className='flex flex-col w-full max-w-7xl bg-gradient-to-br from-[#aa0000bb] to-[#aa000033] lg:flex-row'>
+        <div className='flex flex-col w-full max-w-7xl bg-gradient-to-br from-red-600/75 to-red-600/20 lg:flex-row'>
             <div className='flex justify-center items-center lg:w-3/5 md:p-10 py-5'>
-                <div className='flex flex-col justify-center items-center bg-gradient-to-b from-[#00000055] w-full text-neutral-100 rounded-3xl'>
+                <div className='flex flex-col justify-center items-center bg-gradient-to-b from-black/40 w-full text-neutral-100 rounded-3xl'>
                     <div className="w-full flex flex-col justify-center items-center">
                         <div className='p-2 font-bold'>
-                            <h2>STANDING</h2>
+                            STANDING
                         </div>
-
                         <div className="flex justify-center w-full">
                             {
                                 menuItems.map((a, i) => (
                                     <button
                                         key={i}
-                                        className={`w-full p-4 rounded-t-lg md:text-[17px] text-[10px] font-bold
-                                                ${i === activeTab ? 'text-neutral-200' : 'text-gray-700 bg-[#00000055]'}`}
+                                        className={`w-full p-4 rounded-t-lg md:text-base text-xs font-bold
+                                                ${i === activeTab ? 'text-neutral-100' : 'text-gray-700 bg-black/40'}`}
                                         onClick={() => handleTabClick(i)}
                                     >
                                         {a}
@@ -84,7 +84,7 @@ export default function StandingsAndFixtures({
 
                         <div
                             ref={menuRef}
-                            className="w-full flex overflow-x-hidden snap-x z-10 scrollbar-none scroll-smooth text-[10px] md:text-[15px]"
+                            className="w-full flex overflow-x-hidden snap-x scrollbar-none scroll-smooth text-xs md:text-sm"
                         >
                             {
                                 standingsData.map((responseData, i) => (
@@ -135,13 +135,13 @@ export default function StandingsAndFixtures({
                                                     <Link
                                                         href={`/team/${team.team.id}`}
                                                         key={j + team.team.name}
-                                                        className={`flex w-full p-1 ${j % 2 == 0 ? 'bg-[#00000066]' : ''}
-                                                             hover:bg-[#ee000066]`}
+                                                        className={`flex w-full p-1 ${j % 2 == 0 ? 'bg-black/40' : ''}
+                                                             hover:bg-red-600/50`}
                                                     >
                                                         <div className='w-1/12 flex px-2 justify-center items-center'>
                                                             {j + 1}
                                                         </div>
-                                                        <div className='flex w-3/12 text-[12px] items-center'>
+                                                        <div className='flex w-3/12 text-xs items-center'>
                                                             {team.team.name}
                                                         </div>
                                                         <div className='flex w-6/12 justify-evenly items-center'>
@@ -193,56 +193,24 @@ export default function StandingsAndFixtures({
                 </div>
             </div>
             <div className='flex justify-center items-center lg:w-2/5 pt-10 lg:pr-10 pb-10 lg:pl-0'>
-                <div className='flex flex-col justify-center items-center bg-gradient-to-b from-[#00000055] w-full text-white rounded-3xl h-full'>
+                <div className='flex flex-col justify-center items-center bg-gradient-to-b from-black/40 w-full text-neutral-100 rounded-3xl h-full'>
                     <div className="w-full flex flex-col justify-center items-center">
                         <div className='p-2 font-bold'>
-                            <h2>Upcoming matches</h2>
+                            Upcoming matches
                         </div>
                         <div className='flex flex-col w-full justify-center items-center pb-5 overflow-hidden'>
                             {
-                                activeTab === 0 && (
-                                    fixturesDataByYear.map((fixturesData, i) => {
-                                        return (
-                                            <FixturesByLeague fixturesData={fixturesData} league={"epl"} last={fixturesDataByYear.length - i === 1} key={"epl" + i} />
+                                keyItems.map((league, i) => {
+                                    return (
+                                        activeTab === i && (
+                                            fixturesDataByYear.map((fixturesData, j) => {
+                                                return (
+                                                    <FixturesByLeague fixturesData={fixturesData} league={league} last={fixturesDataByYear.length - j === 1} key={league + j} />
+                                                )
+                                            })
                                         )
-                                    })
-                                )
-                            }
-                            {
-                                activeTab === 1 && (
-                                    fixturesDataByYear.map((fixturesData, i) => {
-                                        return (
-                                            <FixturesByLeague fixturesData={fixturesData} league={"laLiga"} last={fixturesDataByYear.length - i === 1} key={"laLiga" + i} />
-                                        )
-                                    })
-                                )
-                            }
-                            {
-                                activeTab === 2 && (
-                                    fixturesDataByYear.map((fixturesData, i) => {
-                                        return (
-                                            <FixturesByLeague fixturesData={fixturesData} league={"bundesLiga"} last={fixturesDataByYear.length - i === 1} key={"bundesLiga" + i} />
-                                        )
-                                    })
-                                )
-                            }
-                            {
-                                activeTab === 3 && (
-                                    fixturesDataByYear.map((fixturesData, i) => {
-                                        return (
-                                            <FixturesByLeague fixturesData={fixturesData} league={"serieA"} last={fixturesDataByYear.length - i === 1} key={"serieA" + i} />
-                                        )
-                                    })
-                                )
-                            }
-                            {
-                                activeTab === 4 && (
-                                    fixturesDataByYear.map((fixturesData, i) => {
-                                        return (
-                                            <FixturesByLeague fixturesData={fixturesData} league={"ligue1"} last={fixturesDataByYear.length - i === 1} key={"ligue1" + i} />
-                                        )
-                                    })
-                                )
+                                    )
+                                })
                             }
                         </div>
                     </div>
