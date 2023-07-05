@@ -42,7 +42,7 @@ export default async function Team({
 
         <div className="flex w-full justify-center items-center py-5">
             <div className="flex flex-col max-w-7xl p-5 w-full md:flex-row">
-                <div className="flex flex-col md:w-1/3 justify-center items-center
+                <div className="flex flex-col md:w-1/3 justify-center items-center text-white
                     bg-gradient-to-r from-[#460000b0] to-[#ac0606b7] h-[500px]
                     ">
                     <Image
@@ -52,10 +52,10 @@ export default async function Team({
                         height={150}
                         className="p-3"
                     />
-                    <div className="text-white text-2xl">
+                    <div className="text-2xl">
                         {teamInfo.team.name}
                     </div>
-                    <div className="flex justify-center items-center text-white w-full">
+                    <div className="flex justify-center items-center w-full">
                         <div className="w-1/3 text-center text-2xl">
                             #{teamInfo.rank}
                         </div>

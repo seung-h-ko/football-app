@@ -61,9 +61,9 @@ export default function StandingsAndFixtures({
     return (
         <div className='flex flex-col w-full max-w-7xl bg-gradient-to-br from-[#aa0000bb] to-[#aa000033] lg:flex-row'>
             <div className='flex justify-center items-center lg:w-3/5 md:p-10 py-5'>
-                <div className='flex flex-col justify-center items-center bg-gradient-to-b from-[#00000055] w-full text-white rounded-3xl'>
+                <div className='flex flex-col justify-center items-center bg-gradient-to-b from-[#00000055] w-full text-neutral-100 rounded-3xl'>
                     <div className="w-full flex flex-col justify-center items-center">
-                        <div className='p-2'>
+                        <div className='p-2 font-bold'>
                             <h2>STANDING</h2>
                         </div>
 
@@ -72,8 +72,8 @@ export default function StandingsAndFixtures({
                                 menuItems.map((a, i) => (
                                     <button
                                         key={i}
-                                        className={`w-full p-4 rounded-t-lg md:text-[17px] text-[10px]
-                                                ${i === activeTab ? 'text-gray-100' : 'text-gray-700 bg-[#00000055]'}`}
+                                        className={`w-full p-4 rounded-t-lg md:text-[17px] text-[10px] font-bold
+                                                ${i === activeTab ? 'text-neutral-200' : 'text-gray-700 bg-[#00000055]'}`}
                                         onClick={() => handleTabClick(i)}
                                     >
                                         {a}
@@ -195,7 +195,7 @@ export default function StandingsAndFixtures({
             <div className='flex justify-center items-center lg:w-2/5 pt-10 lg:pr-10 pb-10 lg:pl-0'>
                 <div className='flex flex-col justify-center items-center bg-gradient-to-b from-[#00000055] w-full text-white rounded-3xl h-full'>
                     <div className="w-full flex flex-col justify-center items-center">
-                        <div className='p-2'>
+                        <div className='p-2 font-bold'>
                             <h2>Upcoming matches</h2>
                         </div>
                         <div className='flex flex-col w-full justify-center items-center pb-5 overflow-hidden'>

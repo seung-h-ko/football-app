@@ -20,7 +20,7 @@ export default async function SearchBar() {
 
     return (
         <div className="flex w-full p-3 justify-center items-center bg-[#11111131]">
-            <div className="w-1/6 text-white flex justify-center items-center">
+            <div className="w-1/6 text-neutral-200 flex justify-center items-center">
                 <a href={"/"}
                     className="flex justify-center items-center"
                 >
@@ -29,7 +29,7 @@ export default async function SearchBar() {
                         alt="Image"
                         className='w-10 object-cover rounded-full'
                     />
-                    <div className="px-2 md:block hidden">
+                    <div className="px-2 md:block hidden font-bold text-xl">
                         FootyPopo
                     </div>
                 </a>
