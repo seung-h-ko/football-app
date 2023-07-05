@@ -7,9 +7,11 @@ const inter = Inter({ subsets: ['latin'], preload: true })
 export const metadata = {
   title: 'Football',
   description: 'Football/Soccer Info App',
+  metadataBase: new URL('http://localhost:3000'),
   openGraph: {
     title: 'FootyPopo',
-    description: "Football/Soccer Stats, Matches and Team Info App"
+    description: "Football/Soccer Stats, Matches and Team Info App",
+    images: '/public/background.png'
   }
 }
 
