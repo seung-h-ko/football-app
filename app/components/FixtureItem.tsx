@@ -4,7 +4,6 @@ import { Fixture } from "@/types";
 import Image from "next/image";
 import LocalTime from "./LocalTime";
 import moment, { Moment } from "moment";
-import { useState } from "react";
 import Link from "next/link";
 
 interface PageProps {
@@ -18,13 +17,8 @@ export default function FixtureItem({
     index
 }: PageProps) {
 
-    const [today, setToday] = useState<Moment>(moment());
-    const [matchDate, setMatchDate] = useState<Moment>(moment(match.fixture.date));
-
-
-    if (!today) {
-        return null;
-    }
+    const today = moment();
+    const matchDate = moment(match.fixture.date);
 
     return today.isBefore(matchDate) ? (
         <Link
