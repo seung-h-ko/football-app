@@ -136,9 +136,14 @@ type AllFixtures = {
     [tropheeDesChampions: string]: Fixture[]
 };
 
+type AllFixturesNew = {
+    name: string,
+    fixtures: Fixture[]
+}
 
 
 
 
 
-export { League, Team, Games, Fixture, AllFixtures };
+
+export { League, Team, Games, Fixture, AllFixtures, AllFixturesNew };

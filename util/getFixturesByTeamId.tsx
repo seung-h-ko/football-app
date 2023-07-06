@@ -1,24 +1,19 @@
 import 'server-only'
-import getFixtures from './getFixtures';
 import { Fixture } from '@/types';
 import moment from 'moment';
+import getFixturesNew from './getFixturesNew';
 
 export default async function getFixturesByTeamId(id: number) {
 
 
-    const fixturesByYear = await getFixtures();
+    const allFixturesByLeague = await getFixturesNew();
 
     const fixturesByTeamId: Fixture[] = [];
 
-    for (let fixtures of fixturesByYear) {
-        for (let league in fixtures) {
-            if (fixtures.hasOwnProperty(league)) {
-                const fixturesByLeague = fixtures[league] as Fixture[];
-                for (const fixture of fixturesByLeague) {
-                    if (fixture.teams.home.id == id || fixture.teams.away.id == id) {
-                        fixturesByTeamId.push(fixture);
-                    }
-                }
+    for (const league of allFixturesByLeague) {
+        for (const fixture of league.fixtures) {
+            if (fixture.teams.home.id === id || fixture.teams.away.id === id) {
+                fixturesByTeamId.push(fixture);
             }
         }
     }

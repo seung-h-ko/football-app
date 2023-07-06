@@ -1,36 +1,34 @@
 import 'server-only'
-import getFixtures from './getFixtures';
-import { AllFixtures } from '@/types';
+import { AllFixtures, AllFixturesNew } from '@/types';
 import moment from "moment";
+import getFixturesNew from './getFixturesNew';
 
 
 
 export default async function getFixturesForFive() {
 
 
-    const fixturesByYear = await getFixtures();
+    const allFixturesByLeague = await getFixturesNew();
 
-    const fixturesByYear5LeagueOnly: AllFixtures[] = [];
-
-    for (let fixturesOfOneYear of fixturesByYear) {
-
-        let fixturesOfOneYearFor5League: AllFixtures = {};
-        fixturesOfOneYearFor5League["epl"] = fixturesOfOneYear["epl"];
-        fixturesOfOneYearFor5League["laLiga"] = fixturesOfOneYear["laLiga"]
-        fixturesOfOneYearFor5League["bundesLiga"] = fixturesOfOneYear["bundesLiga"]
-        fixturesOfOneYearFor5League["serieA"] = fixturesOfOneYear["serieA"]
-        fixturesOfOneYearFor5League["ligue1"] = fixturesOfOneYear["ligue1"]
-
-        const filteredFixtures: AllFixtures = {};
-
-        for (const league in fixturesOfOneYearFor5League) {
-            const fixtures = fixturesOfOneYearFor5League[league];
-            const filteredLeagueFixtures = fixtures?.filter(fixture => moment(fixture.fixture.date).isAfter(moment().subtract(1, 'day'), 'day')).slice(0, 10);
-            filteredFixtures[league] = filteredLeagueFixtures;
+    const fixturesFor5Leagues: AllFixturesNew[] = [];
+    for (const league of allFixturesByLeague) {
+        if (league.name === "EPL" || league.name === "La Liga" || league.name === "Bundesliga" || league.name === "Serie A" || league.name === "Ligue 1") {
+            fixturesFor5Leagues.push(league);
         }
-
-        fixturesByYear5LeagueOnly.push(filteredFixtures);
     }
 
-    return fixturesByYear5LeagueOnly;
+
+    const filteredFixtures: AllFixturesNew[] = allFixturesByLeague.filter(league => {
+        league.fixtures = league.fixtures.filter(fixture => {
+            return moment(fixture.fixture.date).isAfter(moment().subtract(1, 'day'), 'day');
+        }).slice(0, 5);
+        return league.fixtures.length > 0;
+    });
+
+    for (let league of filteredFixtures) {
+        console.log(league.name + ": " + league.fixtures.length + " games")
+    }
+
+
+    return filteredFixtures;
 };

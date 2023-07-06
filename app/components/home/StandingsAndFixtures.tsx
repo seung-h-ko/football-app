@@ -1,6 +1,6 @@
 'use client'
 
-import { AllFixtures, League } from '@/types';
+import { AllFixtures, AllFixturesNew, League } from '@/types';
 import React, { useEffect, useRef, useState } from 'react';
 import FixturesByLeague from './FixturesByLeague';
 import Link from 'next/link';
@@ -12,13 +12,12 @@ interface StandingsData {
 
 export default function StandingsAndFixtures({
     standingsData,
-    fixturesDataByYear
+    filteredFixtures
 }: {
     standingsData: StandingsData[]
-    fixturesDataByYear: AllFixtures[]
+    filteredFixtures: AllFixturesNew[]
 }) {
-    const menuItems = ['EPL', 'SPL', 'Bundesliga', 'Serie A', 'Ligue 1'];
-    const keyItems = ['epl', 'laLiga', 'bundesliga', 'serieA', 'ligue1'];
+    const menuItems = ['EPL', 'La Liga', 'Bundesliga', 'Serie A', 'Ligue 1'];
     const menuRef = useRef<HTMLDivElement>(null);
     const [activeTab, setActiveTab] = useState(0);
 
@@ -200,13 +199,15 @@ export default function StandingsAndFixtures({
                         </div>
                         <div className='flex flex-col w-full justify-center items-center pb-5 overflow-hidden'>
                             {
-                                keyItems.map((league, i) => {
+                                menuItems.map((leagueName, i) => {
                                     return (
                                         activeTab === i && (
-                                            fixturesDataByYear.map((fixturesData, j) => {
-                                                return (
-                                                    <FixturesByLeague fixturesData={fixturesData} league={league} last={fixturesDataByYear.length - j === 1} key={league + j} />
-                                                )
+                                            filteredFixtures.map((league, j) => {
+                                                if (league.name === leagueName) {
+                                                    return (
+                                                        <FixturesByLeague fixturesData={league.fixtures} key={league.name + j} />
+                                                    )
+                                                }
                                             })
                                         )
                                     )

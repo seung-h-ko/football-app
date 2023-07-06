@@ -1,29 +1,19 @@
 import 'server-only';
-import getFixtures from './getFixtures';
-import { Fixture } from '@/types';
+import getFixturesNew from './getFixturesNew';
 
 export default async function getFixtureByFixtureId(id: number) {
-    let fixtureByFixtureId: Fixture | undefined;
 
     try {
-        const fixturesByYear = await getFixtures();
+        const allFixturesByLeague = await getFixturesNew();
 
-        for (const fixtures of fixturesByYear) {
-            for (const league in fixtures) {
-                if (fixtures.hasOwnProperty(league)) {
-                    const fixturesByLeague = fixtures[league] as Fixture[];
-                    for (const fixture of fixturesByLeague) {
-                        if (fixture.fixture.id === id) {
-                            fixtureByFixtureId = fixture;
-                            break;
-                        }
-                    }
+        for (const league of allFixturesByLeague) {
+            for (const fixture of league.fixtures) {
+                if (fixture.fixture.id === id) {
+                    return fixture;
                 }
             }
         }
     } catch (error) {
         console.error('Error occurred while fetching fixtures:', error);
     }
-
-    return fixtureByFixtureId;
 }
