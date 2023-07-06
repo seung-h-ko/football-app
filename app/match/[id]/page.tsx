@@ -12,8 +12,6 @@ interface PageProps {
     }
 }
 
-export const revalidate = 60;
-
 export default async function Match({
     params
 }: PageProps) {
@@ -24,6 +22,7 @@ export default async function Match({
     } else {
         fixtureByFixtureId = await getFixtureByFixtureId(parseInt(params.id));
     }
+
 
     if (!fixtureByFixtureId) {
         return (

@@ -9,7 +9,6 @@ import LocalTime from "@/app/components/LocalTime";
 import Link from "next/link";
 
 
-
 const Fixtures = ({
     fixturesByTeamId,
     teamId
