@@ -7,7 +7,7 @@ import { AllFixtures, League } from '@/types';
 import { USE_SAMPLE } from '@/sampleData/useSample';
 import getFixturesForFive from '@/util/getFixturesForFive';
 
-
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
 
