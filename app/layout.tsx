@@ -10,8 +10,7 @@ export const metadata = {
   metadataBase: new URL('http://localhost:3000'),
   openGraph: {
     title: 'FootyPopo',
-    description: "Football/Soccer Stats, Matches and Team Info App",
-    images: '/public/background.png'
+    description: "Football/Soccer Stats, Matches and Team Info App"
   }
 }
 
