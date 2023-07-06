@@ -4,6 +4,7 @@ import SearchBarForm from "./SearchBarForm";
 import getTeamsSample from "@/sampleData/getTeamsSample";
 import { USE_SAMPLE } from "@/sampleData/useSample";
 import { Team } from "@/types";
+import Link from "next/link";
 
 
 
@@ -21,7 +22,7 @@ export default async function SearchBar() {
     return (
         <div className="flex w-full p-3 justify-center items-center bg-black/40">
             <div className="w-1/6 text-neutral-100 flex justify-center items-center">
-                <a href={"/"}
+                <Link href={"/"}
                     className="flex justify-center items-center"
                 >
                     <img
@@ -32,7 +33,7 @@ export default async function SearchBar() {
                     <div className="px-2 md:block hidden font-bold text-xl">
                         FootyPopo
                     </div>
-                </a>
+                </Link>
             </div>
             <div className="w-4/6 justify-center flex items-center">
                 <SearchBarForm teamsData={teamsData} />
