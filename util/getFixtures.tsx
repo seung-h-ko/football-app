@@ -46,7 +46,8 @@ async function fetchFixturesByLeague(year: number, league: number): Promise<Fixt
     try {
         const response = await fetch(url, options);
         const result = await response.json();
-        return result.response;
+        const fixtures: Fixture[] = result.response;
+        return fixtures;
     } catch (error) {
         throw new Error(`Failed to fetch fixtures for league ${league}: ${error}`);
     }
@@ -77,9 +78,7 @@ export default async function getFixtures(): Promise<AllFixtures[]> {
                     name: league.name,
                     fixtures: await fetchFixturesByLeague(year - 1, league.league),
                 });
-
                 const existingDataIndex = allFixturesByLeague.findIndex((data) => data.name === league.name);
-
                 if (existingDataIndex !== -1) {
                     allFixturesByLeague[existingDataIndex].fixtures.push(...(await fetchFixturesByLeague(year, league.league)));
                 } else {
