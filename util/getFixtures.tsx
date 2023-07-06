@@ -46,7 +46,11 @@ async function fetchFixturesByLeague(year: number, league: number): Promise<Fixt
     try {
         const response = await fetch(url, options);
         const result = await response.json();
-        return result.response;
+        if (result.response === null || result.response === undefined) {
+            return [];
+        } else {
+            return result.response;
+        }
     } catch (error) {
         throw new Error(`Failed to fetch fixtures for league ${league}: ${error}`);
     }
