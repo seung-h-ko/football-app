@@ -3,9 +3,6 @@ import Fixtures from "./components/Fixtures";
 import getFixturesByTeamId from "@/util/getFixturesByTeamId";
 import { Fixture, Team } from "@/types";
 import getTeamInfoByTeamId from "@/util/getTeamInfoByTeamId";
-import getFixturesByTeamIdSample from "@/sampleData/getFixturesByTeamIdSample";
-import getTeamInfoByTeamIdSample from "@/sampleData/getTeamInfoByTeamIdSample";
-import { USE_SAMPLE } from "@/sampleData/useSample";
 
 
 interface PageProps {
@@ -19,15 +16,9 @@ export default async function Team({
     params
 }: PageProps) {
 
-    let fixturesByTeamId: Fixture[] = [];
-    let teamInfo: Team | undefined;
-    if (USE_SAMPLE) {
-        fixturesByTeamId = getFixturesByTeamIdSample(parseInt(params.id));
-        teamInfo = getTeamInfoByTeamIdSample(parseInt(params.id));
-    } else {
-        fixturesByTeamId = await getFixturesByTeamId(parseInt(params.id));
-        teamInfo = await getTeamInfoByTeamId(parseInt(params.id));
-    }
+    let fixturesByTeamId: Fixture[] = await getFixturesByTeamId(parseInt(params.id));
+    let teamInfo: Team | undefined = await getTeamInfoByTeamId(parseInt(params.id));
+
 
     if (!teamInfo) {
         return (

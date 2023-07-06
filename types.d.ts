@@ -1,4 +1,8 @@
 
+type Standing = {
+    league: League;
+}
+
 type League = {
     id: number,
     name: string,
@@ -121,4 +125,4 @@ type AllFixtures = {
 
 
 
-export { League, Team, Games, Fixture, AllFixtures };
+export { Standing, League, Team, Games, Fixture, AllFixtures };

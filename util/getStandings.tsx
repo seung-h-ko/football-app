@@ -1,11 +1,16 @@
-import { League } from '@/types';
+import getStandingsSample from '@/sampleData/getStandingsSample';
+import { USE_SAMPLE } from '@/sampleData/useSample';
+import { Standing } from '@/types';
 import 'server-only';
 
-interface Standing {
-    league: League;
-}
 
 export default async function getStandings(): Promise<Standing[]> {
+
+    if (USE_SAMPLE) {
+        return getStandingsSample();
+    }
+
+
     try {
         const API_KEY: string = process.env.API_KEY as string;
 

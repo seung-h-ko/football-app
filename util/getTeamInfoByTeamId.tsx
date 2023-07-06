@@ -2,7 +2,7 @@ import 'server-only';
 import getTeams from './getTeams';
 import { Team } from '@/types';
 
-export default async function getTeamInfoByTeamId(id: number): Promise<Team> {
+export default async function getTeamInfoByTeamId(id: number): Promise<Team | undefined> {
 
     try {
 
@@ -15,7 +15,7 @@ export default async function getTeamInfoByTeamId(id: number): Promise<Team> {
             }
         }
 
-        throw new Error(`Team with Id ${id} not found`)
+        return undefined;
 
     } catch (error) {
         console.error('An error occurred while fetching teams:', error);

@@ -2,7 +2,7 @@ import 'server-only';
 import getFixtures from './getFixtures';
 import { Fixture } from '@/types';
 
-export default async function getFixtureByFixtureId(id: number): Promise<Fixture> {
+export default async function getFixtureByFixtureId(id: number): Promise<Fixture | undefined> {
 
     try {
         const allFixturesByLeague = await getFixtures();
@@ -15,7 +15,7 @@ export default async function getFixtureByFixtureId(id: number): Promise<Fixture
             }
         }
 
-        throw new Error(`Fixture with ID ${id} not found`);
+        return undefined;
     } catch (error) {
         console.error('Error occurred while fetching fixtures:', error);
         throw error;

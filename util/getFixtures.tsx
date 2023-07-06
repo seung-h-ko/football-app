@@ -1,3 +1,5 @@
+import getFixturesSample from '@/sampleData/getFixturesSample';
+import { USE_SAMPLE } from '@/sampleData/useSample';
 import { AllFixtures, Fixture } from '@/types';
 import moment from 'moment';
 import 'server-only';
@@ -57,6 +59,12 @@ async function fetchFixturesByLeague(year: number, league: number): Promise<Fixt
 }
 
 export default async function getFixtures(): Promise<AllFixtures[]> {
+
+    if (USE_SAMPLE) {
+        return getFixturesSample();
+    }
+
+
     try {
         const currentTime = moment();
         const year = currentTime.year();

@@ -1,5 +1,4 @@
-import getFixtureByFixtureIdSample from "@/sampleData/getFixtureByFixtureIdSample";
-import { USE_SAMPLE } from "@/sampleData/useSample";
+
 import { Fixture } from "@/types";
 import getFixtureByFixtureId from "@/util/getFixtureByFixtureId";
 import Image from "next/image";
@@ -16,12 +15,7 @@ export default async function Match({
     params
 }: PageProps) {
 
-    let fixtureByFixtureId: Fixture | undefined;
-    if (USE_SAMPLE) {
-        fixtureByFixtureId = getFixtureByFixtureIdSample(parseInt(params.id));
-    } else {
-        fixtureByFixtureId = await getFixtureByFixtureId(parseInt(params.id));
-    }
+    let fixtureByFixtureId: Fixture | undefined = await getFixtureByFixtureId(parseInt(params.id));
 
 
     if (!fixtureByFixtureId) {
