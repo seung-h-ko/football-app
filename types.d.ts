@@ -112,31 +112,6 @@ type Fixture = {
 }
 
 type AllFixtures = {
-    [epl: string]: Fixture[],
-    [laLiga: string]: Fixture[],
-    [bundesLiga: string]: Fixture[],
-    [serieA: string]: Fixture[],
-    [ligue1: string]: Fixture[],
-    [championsLeague: string]: Fixture[],
-    [europaLeauge: string]: Fixture[],
-    [conferenceLeague: string]: Fixture[],
-    [uefaSuperCup: string]: Fixture[],
-    [fifaClubWorldCup: string]: Fixture[],
-    // [clubFriendlies: string]: Fixture[],
-    [faCup: string]: Fixture[],
-    [leagueCup: string]: Fixture[],
-    [communityShield: string]: Fixture[],
-    [copaDelRey: string]: Fixture[],
-    [superCup: string]: Fixture[],
-    [superCupBundes: string]: Fixture[],
-    [superCupSerieA: string]: Fixture[],
-    [coppaItalia: string]: Fixture[],
-    [coupeDeLaLigue: string]: Fixture[],
-    [coupeDeFrance: string]: Fixture[],
-    [tropheeDesChampions: string]: Fixture[]
-};
-
-type AllFixturesNew = {
     name: string,
     fixtures: Fixture[]
 }
@@ -146,4 +121,4 @@ type AllFixturesNew = {
 
 
 
-export { League, Team, Games, Fixture, AllFixtures, AllFixturesNew };
+export { League, Team, Games, Fixture, AllFixtures };

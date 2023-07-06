@@ -3,7 +3,7 @@ import StandingsAndFixtures from './components/home/StandingsAndFixtures'
 import getStandingsSample from '@/sampleData/getStandingsSample';
 import getStandings from '@/util/getStandings';
 import getFixturesSample from '@/sampleData/getFixturesSample';
-import { AllFixtures, AllFixturesNew, League } from '@/types';
+import { AllFixtures, League } from '@/types';
 import { USE_SAMPLE } from '@/sampleData/useSample';
 import getFixturesForFive from '@/util/getFixturesForFive';
 
@@ -14,7 +14,7 @@ export default async function Home() {
 
 
   let standingsData: { league: League }[] = []
-  let filteredFixtures: AllFixturesNew[] = [];
+  let filteredFixtures: AllFixtures[] = [];
   if (USE_SAMPLE) {
     standingsData = getStandingsSample();
     //filteredFixtures = getFixturesSample();

@@ -1,10 +1,10 @@
 import 'server-only';
-import getFixturesNew from './getFixturesNew';
+import getFixtures from './getFixtures';
 
 export default async function getFixtureByFixtureId(id: number) {
 
     try {
-        const allFixturesByLeague = await getFixturesNew();
+        const allFixturesByLeague = await getFixtures();
 
         for (const league of allFixturesByLeague) {
             for (const fixture of league.fixtures) {
@@ -15,5 +15,6 @@ export default async function getFixtureByFixtureId(id: number) {
         }
     } catch (error) {
         console.error('Error occurred while fetching fixtures:', error);
+        throw error;
     }
 }

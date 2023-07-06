@@ -9,19 +9,19 @@ export default function getFixtureByFixtureIdSample(id: number) {
 
     let fixtureByFixtureId!: Fixture;
 
-    for (let fixturesSample of fixturesSampleByYear) {
-        for (let league in fixturesSample) {
-            if (fixturesSample.hasOwnProperty(league)) {
-                const fixturesByLeague = fixturesSample[league] as Fixture[];
-                for (const fixture of fixturesByLeague) {
-                    if (fixture.fixture.id == id) {
-                        fixtureByFixtureId = fixture;
-                        break;
-                    }
-                }
-            }
-        }
-    }
+    // for (let fixturesSample of fixturesSampleByYear) {
+    //     for (let league in fixturesSample) {
+    //         if (fixturesSample.hasOwnProperty(league)) {
+    //             const fixturesByLeague = fixturesSample[league] as Fixture[];
+    //             for (const fixture of fixturesByLeague) {
+    //                 if (fixture.fixture.id == id) {
+    //                     fixtureByFixtureId = fixture;
+    //                     break;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
 
     return fixtureByFixtureId;

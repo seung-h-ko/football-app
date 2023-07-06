@@ -14,10 +14,10 @@ export default async function getTeamInfoByTeamId(id: number) {
                 break;
             }
         }
+
+        return teamInfo;
     } catch (error) {
-        console.error('Error occurred while fetching teams:', error);
+        console.error('An error occurred while fetching teams:', error);
+        throw error;
     }
-
-    return teamInfo;
 }
-

@@ -1,6 +1,6 @@
 'use client'
 
-import { AllFixtures, AllFixturesNew, League } from '@/types';
+import { AllFixtures, League } from '@/types';
 import React, { useEffect, useRef, useState } from 'react';
 import FixturesByLeague from './FixturesByLeague';
 import Link from 'next/link';
@@ -15,7 +15,7 @@ export default function StandingsAndFixtures({
     filteredFixtures
 }: {
     standingsData: StandingsData[]
-    filteredFixtures: AllFixturesNew[]
+    filteredFixtures: AllFixtures[]
 }) {
     const menuItems = ['EPL', 'La Liga', 'Bundesliga', 'Serie A', 'Ligue 1'];
     const menuRef = useRef<HTMLDivElement>(null);
