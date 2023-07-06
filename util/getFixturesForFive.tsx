@@ -3,7 +3,7 @@ import { AllFixtures } from '@/types';
 import moment from 'moment';
 import getFixtures from './getFixtures';
 
-export default async function getFixturesForFive() {
+export default async function getFixturesForFive(): Promise<AllFixtures[]> {
     try {
         const allFixturesByLeague = await getFixtures();
 

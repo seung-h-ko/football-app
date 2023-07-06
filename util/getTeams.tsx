@@ -6,7 +6,7 @@ interface Standing {
     league: League;
 }
 
-export default async function getTeams() {
+export default async function getTeams(): Promise<Team[]> {
     try {
         const standings: Standing[] = await getStandings();
 

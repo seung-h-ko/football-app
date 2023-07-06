@@ -5,7 +5,7 @@ interface Standing {
     league: League;
 }
 
-export default async function getStandings() {
+export default async function getStandings(): Promise<Standing[]> {
     try {
         const API_KEY: string = process.env.API_KEY as string;
 

@@ -3,7 +3,7 @@ import { Fixture } from '@/types';
 import moment from 'moment';
 import getFixtures from './getFixtures';
 
-export default async function getFixturesByTeamId(id: number) {
+export default async function getFixturesByTeamId(id: number): Promise<Fixture[]> {
     try {
         const allFixturesByLeague = await getFixtures();
 
