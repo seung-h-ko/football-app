@@ -77,9 +77,11 @@ export default async function getFixtures(): Promise<AllFixtures[]> {
                     name: league.name,
                     fixtures: await fetchFixturesByLeague(year - 1, league.league),
                 });
-                const existingData = allFixturesByLeague.find((data) => data.name === league.name);
-                if (existingData) {
-                    existingData.fixtures.push(...(await fetchFixturesByLeague(year, league.league)));
+
+                const existingDataIndex = allFixturesByLeague.findIndex((data) => data.name === league.name);
+
+                if (existingDataIndex !== -1) {
+                    allFixturesByLeague[existingDataIndex].fixtures.push(...(await fetchFixturesByLeague(year, league.league)));
                 } else {
                     allFixturesByLeague.push({
                         name: league.name,
