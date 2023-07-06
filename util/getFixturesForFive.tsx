@@ -29,10 +29,6 @@ export default async function getFixturesForFive() {
             }
         );
 
-        for (let league of filteredFixtures) {
-            console.log(league.name + ': ' + league.fixtures.length + ' games');
-        }
-
         return filteredFixtures;
     } catch (error) {
         console.error('An error occurred while fetching fixtures:', error);
